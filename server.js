@@ -73,6 +73,6 @@ const calendar = new Component({
 
 console.log(calendar.toString());
 
-fs.writeFile('./testi-ics.ics', calendar.toString(), err => {
+fs.writeFile('./temp/testi-ics.ics', calendar.toString(), err => {
     if (err) console.error(err);
 });
