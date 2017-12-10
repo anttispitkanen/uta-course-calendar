@@ -1,0 +1,6 @@
+* käyttöliittymä voisi olla sellainen, että käyttäjä copypasteaa kurssin sivun urlin opetusohjelmasta,
+ja parsitaan siitä id, jolla haetaan toteutus
+
+* muistutukset?
+
+* harjoitusryhmän valinta?
