@@ -9,6 +9,12 @@ const fs = require('fs');
 const Component = require('immutable-ics').Component;
 const Property = require('immutable-ics').Property;
 
+const {
+    writeFilePromise,
+    downloadPromise,
+    unlinkPromise
+} = require('./helpers');
+
 const VCALENDAR = 'VCALENDAR';
 const VEVENT = 'VEVENT';
 const VERSION = 'VERSION';
@@ -62,7 +68,7 @@ const calendar = new Component({
                         }),
                         new Property({
                             name: 'TRIGGER',
-                            value: '-P60M' // pitäis olla 1 tunti etukäteen
+                            value: '-P60M'
                         })
                     ]
                 })
@@ -73,6 +79,14 @@ const calendar = new Component({
 
 console.log(calendar.toString());
 
-fs.writeFile('./temp/testi-ics.ics', calendar.toString(), err => {
-    if (err) console.error(err);
+app.get('/', async (req, res) => {
+    const FILE_PATH = './temp/testi-ics.ics';
+    try {
+        await writeFilePromise(fs, FILE_PATH, calendar);
+        await downloadPromise(res, FILE_PATH);
+        await unlinkPromise(fs, FILE_PATH);
+    } catch (e) {
+        console.error(e);
+        res.json({ error: e });
+    }
 });
