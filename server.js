@@ -9,6 +9,9 @@ const fs = require('fs');
 const Component = require('immutable-ics').Component;
 const Property = require('immutable-ics').Property;
 
+const courses = require('./courses.json');
+// console.log(courses.find(a => a.id === 36871))
+
 const {
     writeFilePromise,
     downloadPromise,
@@ -77,7 +80,7 @@ const calendar = new Component({
     ]
 });
 
-console.log(calendar.toString());
+// console.log(calendar.toString());
 
 app.get('/', async (req, res) => {
     const FILE_PATH = './temp/testi-ics.ics';
@@ -89,4 +92,10 @@ app.get('/', async (req, res) => {
         console.error(e);
         res.json({ error: e });
     }
+});
+
+app.get('/course', async (req, res) => {
+    const id = req.query.id;
+    const course = courses.find(a => a.id == id);
+    res.json(course);
 });
