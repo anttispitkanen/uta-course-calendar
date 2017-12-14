@@ -17,11 +17,28 @@ class App extends Component {
     console.log(resJSON);
   }
   render() {
+    if (!this.state.course) {
+      return <div>Fetching...</div>;
+    }
+
+    // console.log(this.state.course._opsi_opryhmat)
+    const opetus = this.state.course._opsi_opryhmat.find(a => a.id_opsi_opetus == 1);
+    console.log(opetus.ajat[0])
+    const jee = opetus.ajat[0];
+
+    const alkuaika = new Date(jee.alkuaika);
+    alkuaika.setHours(jee.alkutunnit);
+    const loppuaika = new Date(jee.alkuaika);
+    loppuaika.setHours(jee.lopputunnit);
+
     return (
       <div className="App">
         <ul className="App-intro">
-          <li>Id: {this.state.course ? this.state.course.id : 'loading...'}</li>
-          <li>Course name: {this.state.course ? this.state.course.name : 'loading...'}</li>
+          <li>Id: {this.state.course.id}</li>
+          <li>Course name: {this.state.course.name}</li>
+          <li>Alkaa: {alkuaika.toString()}</li>
+          <li>Loppuu: {loppuaika.toString()}</li>
+          <li>Paikka: {jee.paikka}</li>
         </ul>
       </div>
     );
