@@ -40,7 +40,6 @@ class App extends Component {
             loppu.setHours(lt);
 
             tunnit.push({
-                id: Math.round(Math.random() * 10000000),
                 nimi,
                 koodi,
                 paikka,
@@ -55,29 +54,40 @@ class App extends Component {
         return tunnit;
     }
 
-    // applyExceptions(opetus, tunnit) {
-    //     const poikkeusajat = opetus.poikkeusajat;
-    //     let lisatiedot;
-    //     let alkuaika;
-    //     let poikkeustunti;
-    //     const filteredTunnit = [];
-    //     // poikkeusajat.map(a => {
-    //     //     alkuaika = new Date(a.alkuaika);
-    //     //     poikkeustunti = tunnit.find(tunti => (tunti.alku.getMonth() === alkuaika.getMonth() && tunti.alku.getDay() === alkuaika.getDay()));
-    //     //     if (poikkeustunti) {
-    //     //         console.log('löytyi ' + alkuaika.toLocaleString())
-    //     //         // console.log('löytyi indeksistä ' + tunnit.indexOf(poikkeustunti))
-    //     //         console.log(poikkeustunti)
-    //     //         poikkeusTunninIndeksi = 
-    //     //     }
-    //     // });
-    //     tunnit.map(tunti => {
-    //         alkuaika = new Date(a.alkuaika);
-    //         poikkeustunti = poikkeusajat.find(a => (tunti.alku.getMonth() === alkuaika.getMonth() && tunti.alku.getDay() === alkuaika.getDay()));
-    //         if 
-    //     });
-    //     return filteredTunnit;
-    // }
+    applyExceptions(opetus, tunnit) {
+        const poikkeusajat = opetus.poikkeusajat;
+        let lisatiedot;
+        let paikka;
+        let alkuaika;
+        let poikkeustunti;
+        const filteredTunnit = [];
+
+        tunnit.map(tunti => {
+            alkuaika = new Date(tunti.alku);
+
+            poikkeustunti = poikkeusajat.find(a => (
+                alkuaika.toLocaleDateString() === new Date(a.alkuaika).toLocaleDateString() &&
+                alkuaika.toLocaleDateString() === new Date(a.alkuaika).toLocaleDateString()
+            ));
+            if (poikkeustunti) {
+                lisatiedot = poikkeustunti.lisatiedot;
+                paikka = poikkeustunti.paikka;
+
+                if (/ei opetusta/.test(lisatiedot.toLowerCase())) {
+                    return;
+                } else if (paikka) {
+                    filteredTunnit.push({
+                        ...tunti,
+                        paikka: paikka
+                    });
+                }
+            } else {
+                filteredTunnit.push(tunti)
+            }
+        });
+
+        return filteredTunnit;
+    }
 
     render() {
         if (!this.state.course) {
@@ -92,6 +102,8 @@ class App extends Component {
         const tunnit = this.parsiTuntiArray(jee, this.state.course);
         console.log(tunnit)
 
+        const filteredLessons = this.applyExceptions(jee, tunnit);
+
         // this.applyExceptions(jee, tunnit)
 
         return (
@@ -101,7 +113,7 @@ class App extends Component {
                 <p>Course name: {this.state.course.name}</p>
 
                 <ul>
-                    {tunnit.map(t => (
+                    {filteredLessons.map(t => (
                         <Tunti
                             key={t.alku}
                             nimi={t.nimi}
