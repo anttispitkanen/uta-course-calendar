@@ -152,4 +152,4 @@ const parseCalendar = lessons => new Component({
     ))
 });
 
-module.exports = { parseCalendar };
+module.exports = { parseLessons, parseCalendar };
