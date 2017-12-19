@@ -6,16 +6,26 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            course: null
+            course: null,
+            // lessons: null
         };
     }
 
     async componentDidMount() {
         try {
-            const response = await fetch('/course?id=36903');
+            // const response = await fetch('/course?id=35678'); // Tietokantaohjelmointi
+            // const response = await fetch('/course?id=36903'); // Tilastotiede
+            // const response = await fetch('/course?id=36871'); // Lineaarialgebra 1A
+            const response = await fetch('/course?id=36911'); // MTTTA4 Statistical Inference 1
+            // const response = await fetch('/course?id=36867'); // MTTMY1
             const resJSON = await response.json();
             this.setState({ course: resJSON });
             console.log(resJSON);
+            // const response = await fetch('/calendar?id=36903');
+            // console.log(response)
+            // const text = await response.text();
+            // console.log(text);
+
         } catch (e) {
             console.error(e);
         }
@@ -32,7 +42,6 @@ class App extends Component {
         const nimi = kurssi.name;
         const koodi = kurssi.code;
 
-
         while (true) {
             alku = new Date(iDate);
             loppu = new Date(iDate);
@@ -47,9 +56,13 @@ class App extends Component {
                 loppu
             });
 
-            if (iDate.getTime() > opetus.toistuvuus_saakka) break;
+            if (iDate.getTime() >= opetus.toistuvuus_saakka || !opetus.toistuvuus) {
+                break;
+            }
+
             iDate.setTime(iDate.getTime() + weekMs);
         }
+
 
         return tunnit;
     }
@@ -73,13 +86,28 @@ class App extends Component {
                 lisatiedot = poikkeustunti.lisatiedot;
                 paikka = poikkeustunti.paikka;
 
-                if (/ei opetusta/.test(lisatiedot.toLowerCase())) {
+                if (/ei opetusta/.test(lisatiedot.toLowerCase()) || /no lectures/.test(lisatiedot.toLowerCase())) {
                     return;
                 } else if (paikka) {
-                    filteredTunnit.push({
-                        ...tunti,
-                        paikka: paikka
-                    });
+                    if (poikkeustunti.alkutunnit && poikkeustunti.lopputunnit) {
+                        const alku = tunti.alku;
+                        const loppu = tunti.loppu;
+                        alku.setHours(poikkeustunti.alkutunnit);
+                        loppu.setHours(poikkeustunti.lopputunnit);
+                        filteredTunnit.push({
+                            ...tunti,
+                            alku,
+                            loppu,
+                            paikka,
+                            lisatiedot: poikkeustunti.lisatiedot
+                        });
+                    } else {
+                        filteredTunnit.push({
+                            ...tunti,
+                            paikka,
+                            lisatiedot: poikkeustunti.lisatiedot
+                        });
+                    }
                 }
             } else {
                 filteredTunnit.push(tunti)
@@ -89,6 +117,16 @@ class App extends Component {
         return filteredTunnit;
     }
 
+    parseLessonArrays(times, course) {
+        const t = times.map(time => (
+            this.applyExceptions(time, this.parsiTuntiArray(time, course))
+        ))
+        .reduce((a, b) => a.concat(b));
+
+        console.log(t);
+        return t;
+    }
+
     render() {
         if (!this.state.course) {
             return <div>Fetching...</div>;
@@ -96,15 +134,16 @@ class App extends Component {
 
         // console.log(this.state.course._opsi_opryhmat)
         const opetus = this.state.course._opsi_opryhmat.find(a => a.id_opsi_opetus == 1);
-        console.log(opetus.ajat[0])
+        // console.log(opetus.ajat[0])
+        const times = opetus.ajat; // array aikoja
         const jee = opetus.ajat[0];
 
         const tunnit = this.parsiTuntiArray(jee, this.state.course);
-        console.log(tunnit)
+        // console.log(tunnit)
 
         const filteredLessons = this.applyExceptions(jee, tunnit);
 
-        // this.applyExceptions(jee, tunnit)
+        const allLessons = this.parseLessonArrays(times, this.state.course);
 
         return (
             <div className="App">
@@ -113,7 +152,7 @@ class App extends Component {
                 <p>Course name: {this.state.course.name}</p>
 
                 <ul>
-                    {filteredLessons.map(t => (
+                    {allLessons.map(t => (
                         <Tunti
                             key={t.alku}
                             nimi={t.nimi}
@@ -121,6 +160,7 @@ class App extends Component {
                             paikka={t.paikka}
                             alku={t.alku}
                             loppu={t.loppu}
+                            lisatiedot={t.lisatiedot}
                         />
                     ))}
                 </ul>
@@ -131,9 +171,9 @@ class App extends Component {
 
 export default App;
 
-const Tunti = ({ nimi, koodi, paikka, alku, loppu }) => (
+const Tunti = ({ nimi, koodi, paikka, alku, loppu, lisatiedot }) => (
     <li style={{ padding: '20px 20px 20px', textAlign: 'left'}}>
-        <div>{nimi} ({koodi})</div>
+        <div>{nimi} ({koodi}) {lisatiedot}</div>
         <div>{paikka}</div>
         <div>Alkaa: {alku.toLocaleString()}</div>
         <div>Loppuu: {loppu.toLocaleString()}</div>
