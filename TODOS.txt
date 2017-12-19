@@ -4,3 +4,5 @@ ja parsitaan siitä id, jolla haetaan toteutus
 * muistutukset?
 
 * harjoitusryhmän valinta?
+
+* testaa miten kellojen siirto vaikuttaa!
