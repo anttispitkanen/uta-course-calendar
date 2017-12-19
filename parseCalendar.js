@@ -89,7 +89,7 @@ const applyExceptions = (teaching, lessons) => {
             additionalInfo = exceptionLesson.lisatiedot;
             location = exceptionLesson.paikka;
 
-            if (/ei opetusta/.test(additionalInfo.toLowerCase())) {
+            if (/ei opetusta/.test(additionalInfo.toLowerCase()) || /no lectures/.test(additionalInfo.toLowerCase())) {
                 // if there is no teaching we don't want to include that lesson
                 return;
             } else if (location) {
