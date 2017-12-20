@@ -1,4 +1,6 @@
+require('dotenv').config();
 const axios = require('axios');
+const fs = require('fs');
 
 const API_KEY = process.env.API_KEY;
 const API_URL = 'https://opendata.uta.fi:8443/apiman-gateway/UTA/opintojaksot/1.0';
@@ -21,3 +23,5 @@ const getCourses = async () => {
         console.error(e);
     }
 }
+
+getCourses();
