@@ -16,8 +16,11 @@ class App extends Component {
             // const response = await fetch('/course?id=35678'); // Tietokantaohjelmointi
             // const response = await fetch('/course?id=36903'); // Tilastotiede
             // const response = await fetch('/course?id=36871'); // Lineaarialgebra 1A
-            const response = await fetch('/course?id=36911'); // MTTTA4 Statistical Inference 1
+            // const response = await fetch('/course?id=36911'); // MTTTA4 Statistical Inference 1
             // const response = await fetch('/course?id=36867'); // MTTMY1
+            // const response = await fetch('/course?id=36868'); // MTTMP1A Johdatus analyysiin
+            // const response = await fetch('/course?id=34940'); // JOVP3 Viestinnän etiikka
+            const response = await fetch('/course?id=34946'); // JOVA18 Journalistinen kieli
             const resJSON = await response.json();
             this.setState({ course: resJSON });
             console.log(resJSON);
@@ -33,7 +36,6 @@ class App extends Component {
 
     parsiTuntiArray(opetus, kurssi) {
         const tunnit = [];
-        const weekMs = 7 * 24 * 60 * 60 * 1000; // number of milliseconds in one week
         const iDate = new Date(opetus.alkuaika);
         const at = opetus.alkutunnit;
         const lt = opetus.lopputunnit;
@@ -60,7 +62,7 @@ class App extends Component {
                 break;
             }
 
-            iDate.setTime(iDate.getTime() + weekMs);
+            iDate.setDate(iDate.getDate() + 7); // advance by a week
         }
 
 
@@ -99,13 +101,13 @@ class App extends Component {
                             alku,
                             loppu,
                             paikka,
-                            lisatiedot: poikkeustunti.lisatiedot
+                            lisatiedot
                         });
                     } else {
                         filteredTunnit.push({
                             ...tunti,
                             paikka,
-                            lisatiedot: poikkeustunti.lisatiedot
+                            lisatiedot
                         });
                     }
                 }
@@ -132,14 +134,22 @@ class App extends Component {
             return <div>Fetching...</div>;
         }
 
-        // console.log(this.state.course._opsi_opryhmat)
         const opetus = this.state.course._opsi_opryhmat.find(a => a.id_opsi_opetus == 1);
-        // console.log(opetus.ajat[0])
+
+        if (!opetus) {
+            return (
+                <div className="App">
+                <p>Id: {this.state.course.id}</p>
+                <p>Tunnus: {this.state.course.code}</p>
+                <p>Course name: {this.state.course.name}</p>
+                <p>Ei luento-opetusta</p>
+            </div>
+            );
+        }
         const times = opetus.ajat; // array aikoja
         const jee = opetus.ajat[0];
 
         const tunnit = this.parsiTuntiArray(jee, this.state.course);
-        // console.log(tunnit)
 
         const filteredLessons = this.applyExceptions(jee, tunnit);
 
