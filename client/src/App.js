@@ -20,7 +20,10 @@ class App extends Component {
             // const response = await fetch('/course?id=36867'); // MTTMY1
             // const response = await fetch('/course?id=36868'); // MTTMP1A Johdatus analyysiin
             // const response = await fetch('/course?id=34940'); // JOVP3 Viestinnän etiikka
-            const response = await fetch('/course?id=34946'); // JOVA18 Journalistinen kieli
+            // const response = await fetch('/course?id=34946'); // JOVA18 Journalistinen kieli
+            // const response = await fetch('/course?id=35149');
+            // const response = await fetch('/course?id=35187');
+            const response = await fetch('/course?id=35267');
             const resJSON = await response.json();
             this.setState({ course: resJSON });
             console.log(resJSON);
@@ -147,11 +150,11 @@ class App extends Component {
             );
         }
         const times = opetus.ajat; // array aikoja
-        const jee = opetus.ajat[0];
+        // const jee = opetus.ajat[0];
 
-        const tunnit = this.parsiTuntiArray(jee, this.state.course);
+        // const tunnit = this.parsiTuntiArray(jee, this.state.course);
 
-        const filteredLessons = this.applyExceptions(jee, tunnit);
+        // const filteredLessons = this.applyExceptions(jee, tunnit);
 
         const allLessons = this.parseLessonArrays(times, this.state.course);
 
