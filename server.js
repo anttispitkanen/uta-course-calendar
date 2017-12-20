@@ -48,20 +48,23 @@ app.get('/course', async (req, res) => {
 });
 
 app.get('/calendar', async (req, res) => {
-    const id = req.query.id;
-    const course = courses.find(a => a.id == id);
-
-    const teaching = course._opsi_opryhmat.find(a => a.id_opsi_opetus == 1);
-    const lessonTimes = teaching.ajat;
-
-    const calendar = parseCalendar(parseLessons(lessonTimes, course));
-    // console.log(calendar.toString())
-
-    // res.send(calendar.toString());
-
-    const FILE_PATH = './temp/testi-ics.ics';
-
     try {
+        const id = req.query.id;
+        const course = courses.find(a => a.id == id);
+
+        const teaching = course._opsi_opryhmat.find(a => a.id_opsi_opetus == 1);
+
+        if (!teaching) {
+            return res.json({ error: 'No lectures on this course' });
+        }
+
+        const lessonTimes = teaching.ajat;
+
+        const calendar = parseCalendar(parseLessons(lessonTimes, course));
+
+        // TODO: naming of files
+        const FILE_PATH = './temp/testi-ics.ics';
+
         await writeFilePromise(fs, FILE_PATH, calendar);
         await downloadPromise(res, FILE_PATH);
         await unlinkPromise(fs, FILE_PATH);
