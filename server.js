@@ -60,6 +60,10 @@ app.get('/calendar', async (req, res) => {
 
         const lessonTimes = teaching.ajat;
 
+        if (!lessonTimes || lessonTImes.length === 0) {
+            return res.json({ error: 'No lecture times provided, try again later' });
+        }
+
         const calendar = parseCalendar(parseLessons(lessonTimes, course));
 
         // TODO: naming of files
