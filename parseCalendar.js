@@ -30,8 +30,7 @@ const TRIGGER = 'TRIGGER';
  */
 const parseLessonArray = (teaching, course) => {
     const lessons = [];
-    const weekMs = 7 * 24 * 60 * 60 * 1000; // number of milliseconds in one week
-    const iDate = new Date(teaching.alkuaika);
+    const iDate = new Date(teaching.alkuaika); // the date that is iterated over
     const startTime = teaching.alkutunnit;
     const endTime = teaching.lopputunnit;
     let start, end;
@@ -50,12 +49,13 @@ const parseLessonArray = (teaching, course) => {
             code,
             location,
             start,
-            end
+            end,
+            additionalInfo: ''
         });
 
         if (iDate.getTime() >= teaching.toistuvuus_saakka || !teaching.toistuvuus) break;
 
-        iDate.setTime(iDate.getTime() + weekMs);
+        iDate.setDate(iDate.getDate() + 7); // advance time with a week
     }
 
     return lessons;
@@ -78,7 +78,6 @@ const applyExceptions = (teaching, lessons) => {
 
     lessons.map(lesson => {
         startTime = new Date(lesson.start);
-        console.log(startTime)
 
         exceptionLesson = exceptionTimes.find(a => (
             startTime.toLocaleDateString() === new Date(a.alkuaika).toLocaleDateString() &&
@@ -94,10 +93,26 @@ const applyExceptions = (teaching, lessons) => {
                 return;
             } else if (location) {
                 // if (exceptional) location is specified, inject that into the lesson
-                filteredLessons.push({
-                    ...lesson,
-                    location
-                });
+                if (exceptionLesson.alkutunnit && exceptionLesson.lopputunnit) {
+                    const start = lesson.start;
+                    const end = lesson.end;
+                    start.setHours(exceptionLesson.alkutunnit);
+                    end.setHours(exceptionLesson.lopputunnit);
+
+                    filteredLessons.push({
+                        ...lesson,
+                        start,
+                        end,
+                        location,
+                        additionalInfo
+                    });
+                } else {
+                    filteredLessons.push({
+                        ...lesson,
+                        location,
+                        additionalInfo
+                    });
+                }
             }
         } else {
             // if there's no corresponding exception, inject the lesson as is
@@ -142,7 +157,7 @@ const parseLesson = lesson => new Component({
         }),
         new Property({
             name: SUMMARY,
-            value: `${lesson.name} (${lesson.code})`
+            value: `${lesson.name} (${lesson.code}) ${lesson.additionalInfo}`
         }),
         new Property({
             name: LOCATION,
