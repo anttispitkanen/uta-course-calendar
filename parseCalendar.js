@@ -80,8 +80,8 @@ const applyExceptions = (teaching, lessons) => {
         startTime = new Date(lesson.start);
 
         exceptionLesson = exceptionTimes.find(a => (
-            startTime.toLocaleDateString() === new Date(a.alkuaika).toLocaleDateString() &&
-            startTime.toLocaleDateString() === new Date(a.alkuaika).toLocaleDateString()
+            startTime.getDate() === new Date(a.alkuaika).getDate() &&
+            startTime.getMonth() === new Date(a.alkuaika).getMonth()
         ));
 
         if (exceptionLesson) {
