@@ -5,4 +5,9 @@ ja parsitaan siitä id, jolla haetaan toteutus
 
 * harjoitusryhmän valinta?
 
-* testaa miten kellojen siirto vaikuttaa!
+* opetustyypit ("id_opsi_opetus")
+    * luento-opetus = 1
+    * pienryhmäopetus = 2
+    * seminaari = 6
+    * harjoitusryhmä = 7
+    * ? = ?...
