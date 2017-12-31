@@ -1,0 +1,15 @@
+.main-footer {
+    background-color: rgb(198, 68, 68);
+    color: white;
+    font-weight: 300;
+    display: flex;
+    justify-content: flex-end;
+
+    .copyright {
+        padding: 20px;
+
+        .footer-link {
+            color: white;
+        }
+    }
+}
