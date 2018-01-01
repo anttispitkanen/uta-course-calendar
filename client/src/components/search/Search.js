@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import './Search.scss';
 
 class Search extends Component {
@@ -15,7 +17,40 @@ class Search extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        console.log('Syötettiin notta ' + this.state.value + ' :D');
+        try {
+            const id = this.validateInput(this.state.value);
+            console.log(id);
+            // TODO: actually do something with the id
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    validateInput = input => {
+        if (isNaN(parseInt(input, 10))) {
+            // when given a url (or any input not parseable-as-int)
+            // try to find the id param and return it, if no id found, throw error
+            try {
+                const url = new URL(input);
+                const id = url.searchParams.get('id');
+                if (id) {
+                    if(isNaN(parseInt(id, 10))) {
+                        // if there is an id but it can't be parsed as int, throw error
+                        throw new Error('ID invalid');
+                    } else {
+                        // if id is found and can be parsed as int, return it
+                        return parseInt(id, 10);
+                    }
+                } else {
+                    throw new Error('No ID found');
+                }
+            } catch (e) {
+                throw new Error(e);
+            }
+        } else {
+            // if input can be parsed as a number, send it as is
+            return parseInt(input, 10);
+        }
     }
 
     render() {
@@ -30,11 +65,19 @@ class Search extends Component {
                         onChange={this.handleChange}
                         className="search-text"
                     />
-                    <input
-                        type="submit"
-                        value="Search"
-                        className="search-submit-button"
-                    />
+
+                    <div className="search-btn-link-container">
+                        <input
+                            type="submit"
+                            value="Search"
+                            className="search-submit-button"
+                            disabled={!this.state.value}
+                        />
+
+                        <Link to="/help" className="search-help-link">
+                            How to use?
+                        </Link>
+                    </div>
                 </form>
             </div>
         );
