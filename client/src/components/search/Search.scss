@@ -15,6 +15,13 @@ $search-text-color: #222;
     height: 100vh;
     color: $search-text-color;
 
+    .call-to-action {
+        position: absolute;
+        top: 20%;
+        font-size: 1.2rem;
+        font-weight: 200;
+    }
+
     .search-form {
         display: flex;
         flex-direction: column;

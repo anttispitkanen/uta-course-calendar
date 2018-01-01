@@ -56,6 +56,11 @@ class Search extends Component {
     render() {
         return (
             <div className="search">
+                <div className="call-to-action">
+                    <p>Studying in University of Tampere?</p>
+                    <p>Create your study calendar easily!</p>
+                </div>
+
                 <form className="search-form" onSubmit={this.handleSubmit}>
                     <label className="search-label">Search for the course:</label>
                     <input
