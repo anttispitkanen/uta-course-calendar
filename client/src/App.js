@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import './App.scss';
 
 import Header from './components/header/Header';
 import Search from './components/search/Search';
-import MockPreview from './mockPreview/MockPreview';
+import RootRoutes from './RootRoutes';
 import Footer from './components/footer/Footer';
 
-class App extends Component {
-    render() {
-        return (
-            <div className="app">
-                <Header />
-                <Search />
-                <MockPreview />
-                <Footer />
-            </div>
-        );
-    }
-}
+const App = () => (
+    <Router>
+        <div className="app">
+            <Header />
+            <Search />
+            <RootRoutes />
+            <Footer />
+        </div>
+    </Router>
+);
 
 export default App;
