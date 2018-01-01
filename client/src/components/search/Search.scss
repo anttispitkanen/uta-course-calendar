@@ -1,5 +1,6 @@
 $search-padding: 12px;
 $search-grid-padding: 20px;
+$search-text-color: #222;
 
 .search {
     background-color: rgb(197, 208, 194);
@@ -12,6 +13,7 @@ $search-grid-padding: 20px;
     align-items: center;
     padding: $search-grid-padding;
     height: 100vh;
+    color: $search-text-color;
 
     .search-form {
         display: flex;
@@ -33,6 +35,7 @@ $search-grid-padding: 20px;
             padding: $search-padding;
             border: none;
             width: 100%;
+            color: $search-text-color;
         }
 
         .search-btn-link-container {
@@ -48,10 +51,12 @@ $search-grid-padding: 20px;
                 font-size: 1rem;
                 border: none;
                 align-self: flex-end;
+                color: $search-text-color;
             }
 
             .search-help-link {
                 padding: $search-padding;
+                color: $search-text-color;
             }
         }
     }
