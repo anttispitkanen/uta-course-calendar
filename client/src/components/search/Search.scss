@@ -1,0 +1,40 @@
+$search-padding: 12px;
+
+.search {
+    background-color: rgb(61, 216, 243);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+    .search-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 500px;
+
+        .search-label {
+            padding: $search-padding;
+            align-self: flex-start;
+        }
+
+        .search-text {
+            font-size: 1rem;
+            padding: $search-padding;
+            border: none;
+            width: 100%;
+        }
+
+        .search-submit-button {
+            margin: 0;
+            padding: $search-padding;
+            font-size: 1rem;
+            border: none;
+            margin-top: 20px;
+            align-self: flex-end;
+        }
+    }
+}
