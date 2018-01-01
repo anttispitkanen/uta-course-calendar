@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.scss';
 
 import Header from './components/header/Header';
+import Search from './components/search/Search';
 import MockPreview from './mockPreview/MockPreview';
 import Footer from './components/footer/Footer';
 
@@ -11,6 +11,7 @@ class App extends Component {
         return (
             <div className="app">
                 <Header />
+                <Search />
                 <MockPreview />
                 <Footer />
             </div>
