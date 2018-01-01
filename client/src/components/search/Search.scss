@@ -1,12 +1,17 @@
 $search-padding: 12px;
+$search-grid-padding: 20px;
 
 .search {
-    background-color: rgb(61, 216, 243);
+    background-color: rgb(197, 208, 194);
+    background-image: url('../../images/bg.jpg');
+    background-position: center;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: $search-grid-padding;
+    height: 100vh;
 
     .search-form {
         display: flex;
@@ -14,7 +19,9 @@ $search-padding: 12px;
         justify-content: center;
         align-items: center;
         width: 100%;
-        max-width: 500px;
+        max-width: 550px;
+        padding: $search-grid-padding;
+        background-color: rgba(255, 255, 255, 0.7);
 
         .search-label {
             padding: $search-padding;
@@ -28,13 +35,24 @@ $search-padding: 12px;
             width: 100%;
         }
 
-        .search-submit-button {
-            margin: 0;
-            padding: $search-padding;
-            font-size: 1rem;
-            border: none;
-            margin-top: 20px;
-            align-self: flex-end;
+        .search-btn-link-container {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: $search-grid-padding;
+
+            .search-submit-button {
+                margin: 0;
+                padding: $search-padding;
+                font-size: 1rem;
+                border: none;
+                align-self: flex-end;
+            }
+
+            .search-help-link {
+                padding: $search-padding;
+            }
         }
     }
 }
