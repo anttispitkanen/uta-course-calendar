@@ -31,8 +31,10 @@ const TRIGGER = 'TRIGGER';
 const parseLessonArray = (teaching, course) => {
     const lessons = [];
     const iDate = new Date(teaching.alkuaika); // the date that is iterated over
-    const startTime = teaching.alkutunnit;
-    const endTime = teaching.lopputunnit;
+    const startHours = teaching.alkutunnit;
+    const startMins = teaching.alkuminuutit || 0;
+    const endHours = teaching.lopputunnit;
+    const endMins = teaching.loppuminuutit || 0;
     let start, end;
     const location = teaching.paikka;
     const name = course.name;
@@ -41,8 +43,10 @@ const parseLessonArray = (teaching, course) => {
     while (true) {
         start = new Date(iDate);
         end = new Date(iDate);
-        start.setHours(startTime);
-        end.setHours(endTime);
+        start.setHours(startHours);
+        start.setMinutes(startMins);
+        end.setHours(endHours);
+        end.setMinutes(endMins);
 
         lessons.push({
             name,
