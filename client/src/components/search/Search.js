@@ -23,6 +23,7 @@ class Search extends Component {
         } catch (e) {
             console.log(e);
             this.props.searchError();
+            // TODO: replace alert with a proper modal or tooltip
             window.alert('That\'s not a valid url :(\nSee "How to use?" if you need help.');
         }
     }
