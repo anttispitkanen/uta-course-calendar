@@ -81,6 +81,10 @@ $btn-green: rgb(76, 175, 80);
                 &:focus {
                     outline: none;
                 }
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
 
             .search-help-link {
