@@ -3,8 +3,10 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import createSagaMiddleware from 'redux-saga';
 
 import rootReducer from './redux/rootReducer';
+import appSaga from './redux/rootSagas';
 
 import './App.scss';
 
@@ -13,11 +15,17 @@ import Search from './components/search';
 import RootRoutes from './RootRoutes';
 import Footer from './components/footer/Footer';
 
+const sagaMiddleware = createSagaMiddleware();
+
 const store = createStore(
-    rootReducer, // TODO: replace with reducer
+    rootReducer,
     {}, // no initially loaded state,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() // TODO: change when sagas are in place
+    composeWithDevTools(
+        applyMiddleware(sagaMiddleware)
+    )
 );
+
+sagaMiddleware.run(appSaga);
 
 const App = () => (
     <Provider store={store}>
