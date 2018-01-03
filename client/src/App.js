@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
