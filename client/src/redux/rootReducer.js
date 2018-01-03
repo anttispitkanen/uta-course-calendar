@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
 import {
-    searchReducer
+    searchReducer,
+    courseReducer
 } from './reducers';
 
 export default combineReducers({
-    searchReducer
+    searchReducer,
+    courseReducer
 });

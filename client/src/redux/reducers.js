@@ -46,6 +46,25 @@ const initialCourseState = {
 
 export const courseReducer = (state = initialCourseState, action) => {
     switch (action.type) {
+        case 'COURSE_FETCH':
+            return {
+                ...state,
+                status: courseStatus.FETCHING
+            };
+
+        case 'COURSE_FETCH_ERROR':
+            return {
+                ...state,
+                status: courseStatus.ERROR
+            };
+
+        case 'COURSE_FETCH_SUCCESS':
+            return {
+                ...state,
+                status: courseStatus.SUCCESS,
+                course: action.course
+            };
+
         default:
             return state;
     }

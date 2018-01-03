@@ -22,4 +22,21 @@ export const searchActions = {
 /**
  * Course actions
  */
+const courseFetch = () => ({
+    type: 'COURSE_FETCH'
+});
 
+const courseFetchError = () => ({
+    type: 'COURSE_FETCH_ERROR'
+});
+
+const courseFetchSuccess = course => ({
+    type: 'COURSE_FETCH_SUCCESS',
+    course
+});
+
+export const courseActions = {
+    courseFetch,
+    courseFetchError,
+    courseFetchSuccess
+};
