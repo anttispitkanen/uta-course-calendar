@@ -20,7 +20,7 @@ const store = createStore(
 );
 
 const App = () => (
-    <Provider>
+    <Provider store={store}>
         <Router>
             <div className="app">
                 <Header />
