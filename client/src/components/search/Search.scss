@@ -1,6 +1,7 @@
 $search-padding: 12px;
-$search-grid-padding: 20px;
+$search-grid-padding: 25px;
 $search-text-color: #222;
+$btn-green: rgb(76, 175, 80);
 
 .search {
     background-color: rgb(197, 208, 194);
@@ -30,7 +31,8 @@ $search-text-color: #222;
         width: 100%;
         max-width: 550px;
         padding: $search-grid-padding;
-        background-color: rgba(255, 255, 255, 0.7);
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.5);
 
         .search-label {
             padding: $search-padding;
@@ -43,6 +45,14 @@ $search-text-color: #222;
             border: none;
             width: 100%;
             color: $search-text-color;
+            background-color: rgba(0, 0, 0, 0);
+            border-bottom: 1px solid #666;
+            transition: border-bottom-color 1s;
+
+            &:focus {
+                outline: none;
+                border-bottom-color: $btn-green;
+            }
         }
 
         .search-btn-link-container {
@@ -55,15 +65,27 @@ $search-text-color: #222;
             .search-submit-button {
                 margin: 0;
                 padding: $search-padding;
+                padding-left: 24px;
+                padding-right: 24px;
                 font-size: 1rem;
                 border: none;
-                align-self: flex-end;
-                color: $search-text-color;
+                border-radius: 50px;
+                color: #EEE;
+                font-weight: 200;
+                background-color: $btn-green;
+
+                &:disabled {
+                    opacity: .7;
+                }
+
+                &:focus {
+                    outline: none;
+                }
             }
 
             .search-help-link {
                 padding: $search-padding;
-                color: $search-text-color;
+                color: $btn-green;
             }
         }
     }
