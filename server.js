@@ -44,7 +44,11 @@ app.get('/course', async (req, res) => {
 
     // const calendar = parseCalendar(parseLessons(teaching, course));
 
-    res.json(course);
+    if (course) {
+        res.json(course);
+    } else {
+        res.json({ error: `No course found with id ${id}` });
+    }
 });
 
 app.get('/calendar', async (req, res) => {

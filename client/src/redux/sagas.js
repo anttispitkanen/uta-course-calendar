@@ -18,6 +18,7 @@ function* fetchCourse() {
     try {
         const id = yield select(state => state.searchReducer.id);
         const course = yield call(courseFetcher, id);
+        if (course.error) throw Error();
         yield put(courseActions.courseFetchSuccess(course));
     } catch (e) {
         yield put(courseActions.courseFetchError());
