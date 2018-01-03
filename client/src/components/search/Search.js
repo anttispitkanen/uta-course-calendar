@@ -19,10 +19,11 @@ class Search extends Component {
         event.preventDefault();
         try {
             const id = this.validateInput(this.state.value);
-            console.log(id);
-            // TODO: actually do something with the id
+            this.props.search(id);
         } catch (e) {
             console.log(e);
+            this.props.searchError();
+            window.alert('That\'s not a valid url :(\nSee "How to use?" if you need help.');
         }
     }
 

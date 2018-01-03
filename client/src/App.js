@@ -9,7 +9,7 @@ import rootReducer from './redux/rootReducer';
 import './App.scss';
 
 import Header from './components/header/Header';
-import Search from './components/search/Search';
+import Search from './components/search';
 import RootRoutes from './RootRoutes';
 import Footer from './components/footer/Footer';
 

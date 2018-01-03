@@ -1,12 +1,9 @@
 import { combineReducers } from 'redux';
 
-const testReducer = (state = { kissa: 'Maisa' }, action) => {
-    switch(action.type) {
-        default:
-            return state;
-    }
-}
+import {
+    searchReducer
+} from './reducers';
 
 export default combineReducers({
-    testReducer
+    searchReducer
 });
