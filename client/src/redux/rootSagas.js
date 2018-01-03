@@ -1,11 +1,9 @@
 import { all } from 'redux-saga/effects';
 
-function* testSaga() {
-    yield console.log('jee saaga toimii :DD')
-}
+import { watchFetchCourse } from './sagas';
 
 export default function* appSaga() {
     yield all([
-        testSaga()
+        watchFetchCourse()
     ]);
 }

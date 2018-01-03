@@ -19,7 +19,8 @@ class Search extends Component {
         event.preventDefault();
         try {
             const id = this.validateInput(this.state.value);
-            this.props.search(id);
+            this.props.search(id); // set the id to state
+            this.props.courseFetch(); // search with the id in store
         } catch (e) {
             console.log(e);
             this.props.searchError();
