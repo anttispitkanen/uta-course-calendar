@@ -1,27 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Course from './Course';
+import './Preview.scss';
 
-class Preview extends Component {
+const Preview = ({ course, status }) => {
+    if (status === 'FETCHING') return (
+        <div className="preview-placeholder">
+            <div className="spinner"></div>
+            <span>Fetching...</span>
+        </div>
+    );
 
-    render() {
-        const { course, status } = this.props;
+    if (status === 'ERROR') return <div className="preview-placeholder">Could not find course</div>;
 
-        if (status === 'FETCHING') {
-            return <div>Fetching...</div>;
-        }
+    if (!course) return (
+        <div className="preview-placeholder">
+            <i className="icon fa fa-arrow-up"></i>
+            <span>Search for a course above</span>
+        </div>
+    );
 
-        if (status === 'ERROR') {
-            return <div>Could not find course</div>;
-        }
-
-        if (!course) {
-            return <div>Search for a course above</div>;
-        }
-
-        console.log(this.props.course);
-        return (
-            <div>Course found, check console!</div>
-        );
-    }
+    return <Course course={course} />;
 }
 
 export default Preview;
