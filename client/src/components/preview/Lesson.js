@@ -1,15 +1,13 @@
 import React from 'react';
+import moment from 'moment';
 import './Lesson.scss';
 
-const Lesson = ({ name, code, location, start, end, groupName, groupType, additionalInfo }) => (
+const Lesson = ({ location, start, end, additionalInfo }) => (
     <li className="single-lesson">
-        {/* <div>{name} ({code}) {groupName} {additionalInfo}</div> */}
-        {/* <div>{groupName} {additionalInfo}</div> */}
         <div>{additionalInfo || null}</div>
-        {/* <div>{groupType !== 1 ? groupType : null}</div> */}
         <div>{location}</div>
-        <div>{start.toLocaleDateString()}</div>
-        <div>{start.toLocaleTimeString()} - {end.toLocaleTimeString()}</div>
+        <div>{moment(start).format('ddd D.M.YYYY')}</div>
+        <div>{moment(start).format('H.mm')} - {moment(end).format('H.mm')}</div>
     </li>
 );
 
