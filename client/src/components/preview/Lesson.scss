@@ -1,0 +1,11 @@
+.single-lesson {
+    border: 1px solid #DDD;
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+
+    &:nth-last-child(1) {
+        margin-bottom: 0px;
+    }
+}
