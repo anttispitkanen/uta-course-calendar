@@ -5,11 +5,13 @@ import './LessonsCard.scss';
 // TODO: find out the rest of these
 const lessonIdCodes = {
     1: 'Lectures',
-    2: 'Harjoitukset',
-    7: 'Pienryhmäopetus'
+    2: 'Pienryhmäopetus',
+    6: 'Seminaari',
+    7: 'Harjoitukset'
 };
 
 const LessonsCard = ({ lessons, groupName, groupType }) => (
+    lessons && // this ensures we don't render an empty LessonsCard
     <div className="lessons-card">
         <div className="lessons-card-header">
             <h3>{lessonIdCodes[groupType]}</h3>

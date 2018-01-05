@@ -73,7 +73,8 @@ class Course extends Component {
             times.push(this.applyExceptions(t, this.newParseLessonArray(t, course, groupName, groupType)))
         });
 
-        return times;
+        // return null if there are no lessons (which is apparently a bug in the UTA system)
+        return times.length > 0 ? times : null;
     }
 
     newParseLessonArray(teaching, course, groupName, groupType) {
@@ -121,9 +122,6 @@ class Course extends Component {
         const { course } = this.props;
 
         const teachings = course._opsi_opryhmat; // TODO: filter only the ones we want to include
-
-        // FIXME: testing
-        // teachings.map(t => this.parseOpsiRyhma(course, t));
 
         return (
             <div className="course-wrapper">
