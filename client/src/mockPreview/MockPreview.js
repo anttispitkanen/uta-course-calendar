@@ -1,12 +1,36 @@
 import React, { Component } from 'react';
 import '../App.scss';
 
+// const dict = {
+//     luento: 1,
+//     pienryhma: 2,
+//     seminaari: 6,
+//     harjoitusryhma: 7
+// };
+
 class MockPreview extends Component {
     constructor() {
         super();
         this.state = {
             course: null,
-            // lessons: null
+            filters: {
+                '1': {
+                    active: true,
+                    name: 'Luento-opetus'
+                },
+                '2': {
+                    active: false,
+                    name: 'Pienryhmä'
+                },
+                '6': {
+                    active: false,
+                    name: 'Seminaari'
+                },
+                '7': {
+                    active: true,
+                    name: 'Harjoitusryhmä'
+                }
+            }
         };
     }
 
@@ -25,6 +49,7 @@ class MockPreview extends Component {
             // const response = await fetch('/course?id=35267');
             // const response = await fetch('/course?id=36906'); // MTTA1 Kandidaattitutkielma ja seminaari
             const response = await fetch('/course?id=36907'); // MTTTA1 Tilastomenetelmien perusteet
+            // const response = await fetch('/course?id=36546');
             const resJSON = await response.json();
             this.setState({ course: resJSON });
             console.log(resJSON);
@@ -42,7 +67,9 @@ class MockPreview extends Component {
         const tunnit = [];
         const iDate = new Date(opetus.alkuaika);
         const at = opetus.alkutunnit;
+        const am = opetus.alkuminuutit || 0;
         const lt = opetus.lopputunnit;
+        const lm = opetus.loppuminuutit || 0;
         let alku, loppu;
         const paikka = opetus.paikka;
         const nimi = kurssi.name;
@@ -52,7 +79,9 @@ class MockPreview extends Component {
             alku = new Date(iDate);
             loppu = new Date(iDate);
             alku.setHours(at);
+            alku.setMinutes(am);
             loppu.setHours(lt);
+            loppu.setMinutes(lm);
 
             tunnit.push({
                 nimi,
@@ -68,7 +97,6 @@ class MockPreview extends Component {
 
             iDate.setDate(iDate.getDate() + 7); // advance by a week
         }
-
 
         return tunnit;
     }
@@ -133,17 +161,50 @@ class MockPreview extends Component {
         return t;
     }
 
+    handleInputChange(event) {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+        this.setState({
+            ...this.state,
+            filters: {
+                ...this.state.filters,
+                [name]: {
+                    ...this.state.filters[name],
+                    active: value
+                }
+            }
+        });
+    }
+
     render() {
         if (!this.state.course) {
             return <div>Fetching...</div>;
         }
 
         /* Luento-opetus */
-        const opetus = this.state.course._opsi_opryhmat.find(a => a.id_opsi_opetus == 1);
+        // const opetukset = this.state.course._opsi_opryhmat.filter(a => a.id_opsi_opetus == 1);
         /* Pienryhmäopetus */
-        // const opetus = this.state.course._opsi_opryhmat.filter(a => a.id_opsi_opetus == 2);
+        // const opetukset = this.state.course._opsi_opryhmat.filter(a => a.id_opsi_opetus == id_opsi_opetus);
+        const opetukset = this.state.course._opsi_opryhmat.filter(a => {
+            // a.id_opsi_opetus == id_opsi_opetus
+            if (a.id_opsi_opetus in this.state.filters) {
+                return this.state.filters[a.id_opsi_opetus].active
+            }
+        });
 
-        if (!opetus) {
+        // if (!opetus) {
+        //     return (
+        //         <div className="App">
+        //         <p>Id: {this.state.course.id}</p>
+        //         <p>Tunnus: {this.state.course.code}</p>
+        //         <p>Course name: {this.state.course.name}</p>
+        //         <p>Ei luento-opetusta</p>
+        //     </div>
+        //     );
+        // }
+
+        if (!opetukset) {
             return (
                 <div className="App">
                 <p>Id: {this.state.course.id}</p>
@@ -153,23 +214,72 @@ class MockPreview extends Component {
             </div>
             );
         }
-        const times = opetus.ajat; // array aikoja
+        const allLessons = [];
+
+        opetukset.map(opetus => {
+            const times = opetus.ajat;
+            allLessons.push(this.parseLessonArrays(times, this.state.course));
+        });
+        // const times = opetus.ajat; // array aikoja
         // const jee = opetus.ajat[0];
 
         // const tunnit = this.parsiTuntiArray(jee, this.state.course);
 
         // const filteredLessons = this.applyExceptions(jee, tunnit);
 
-        const allLessons = this.parseLessonArrays(times, this.state.course);
+        // const allLessons = this.parseLessonArrays(times, this.state.course);
 
         return (
             <div className="App">
+                <div>
+                    <form>
+                        <label>
+                            {this.state.filters['1'].name}
+                            <input
+                                name="1"
+                                type="checkbox"
+                                checked={this.state.filters['1'].active}
+                                onChange={(e) => this.handleInputChange(e)}
+                            />
+                        </label>
+
+                        <label>
+                            {this.state.filters['2'].name}
+                            <input
+                                name="2"
+                                type="checkbox"
+                                checked={this.state.filters['2'].active}
+                                onChange={(e) => this.handleInputChange(e)}
+                            />
+                        </label>
+
+                        <label>
+                            {this.state.filters['6'].name}
+                            <input
+                                name="6"
+                                type="checkbox"
+                                checked={this.state.filters['6'].active}
+                                onChange={(e) => this.handleInputChange(e)}
+                            />
+                        </label>
+
+                        <label>
+                            {this.state.filters['7'].name}
+                            <input
+                                name="7"
+                                type="checkbox"
+                                checked={this.state.filters['7'].active}
+                                onChange={(e) => this.handleInputChange(e)}
+                            />
+                        </label>
+                    </form>
+                </div>
                 <p>Id: {this.state.course.id}</p>
                 <p>Tunnus: {this.state.course.code}</p>
                 <p>Course name: {this.state.course.name}</p>
 
                 <ul>
-                    {allLessons.map(t => (
+                    {allLessons.map(lessons => lessons.map(t => (
                         <Tunti
                             key={t.alku}
                             nimi={t.nimi}
@@ -179,7 +289,7 @@ class MockPreview extends Component {
                             loppu={t.loppu}
                             lisatiedot={t.lisatiedot}
                         />
-                    ))}
+                    )))}
                 </ul>
             </div>
         );
