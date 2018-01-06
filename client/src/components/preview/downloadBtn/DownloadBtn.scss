@@ -1,0 +1,18 @@
+.download-btn {
+    background-color: #4caf50;
+    color: #EEE;
+    padding: 16px 32px;
+    border-radius: 50px;
+    border: none;
+    font-size: 1.3rem;
+    margin: 60px;
+    cursor: pointer;
+
+    &:disabled {
+        opacity: .7;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
