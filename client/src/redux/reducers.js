@@ -85,3 +85,20 @@ export const courseReducer = (state = initialCourseState, action) => {
             return state;
     }
 }
+
+/**
+ * Reducer for chosen groups to send to server for parsing and download
+ */
+export const chosenGroupsReducer = (state = [], action) => {
+    switch (action.type) {
+        case 'TOGGLE_GROUP_CHOSEN_FOR_DOWNLOAD':
+            if (state.find(a => a.id === action.id)) {
+                return state.filter(a => a.id !== action.id);
+            } else {
+                return [ ...state, action.group ];
+            }
+
+        default:
+            return state;
+    }
+}

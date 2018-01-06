@@ -2,10 +2,12 @@ import { combineReducers } from 'redux';
 
 import {
     searchReducer,
-    courseReducer
+    courseReducer,
+    chosenGroupsReducer
 } from './reducers';
 
 export default combineReducers({
     searchReducer,
-    courseReducer
+    courseReducer,
+    chosenGroupsReducer
 });

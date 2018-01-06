@@ -1,11 +1,11 @@
 import React from 'react';
 import './DownloadBtn.scss';
 
-const DownloadBtn = () => (
+const DownloadBtn = ({ chosenGroups }) => (
     <button
         className="download-btn"
         onClick={() => window.alert('daunloud')}
-        disabled={true}
+        disabled={chosenGroups.length === 0}
     >
         Download
     </button>

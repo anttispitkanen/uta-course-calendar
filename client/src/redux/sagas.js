@@ -2,7 +2,7 @@
  * Sagas
  */
 import { takeEvery, put, call, select } from 'redux-saga/effects';
-import { courseActions } from './actions';
+import { courseActions, groupActions } from './actions';
 
 /**
  * Course sagas
@@ -45,4 +45,22 @@ const courseFetcher = id => (
 const injectSelected = course => {
     course._opsi_opryhmat.map(o => o.selected = false);
     return course;
+}
+
+/**
+ * Group sagas
+ */
+
+// watcher saga
+export function* watchToggleCourse() {
+    yield takeEvery('TOGGLE_GROUP_SELECTED', toggleCourse);
+}
+
+// worker saga
+function* toggleCourse(action) {
+    try {
+        yield put(groupActions.toggleGroupChosenForDownload(action.id, action.group));
+    } catch (e) {
+        console.error(e);
+    }
 }

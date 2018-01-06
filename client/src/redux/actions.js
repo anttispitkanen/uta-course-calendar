@@ -35,9 +35,10 @@ const courseFetchSuccess = course => ({
     course
 });
 
-const toggleGroupSelected = id => ({
+const toggleGroupSelected = (id, group) => ({
     type: 'TOGGLE_GROUP_SELECTED',
-    id
+    id,
+    group
 });
 
 export const courseActions = {
@@ -45,4 +46,18 @@ export const courseActions = {
     courseFetchError,
     courseFetchSuccess,
     toggleGroupSelected
+};
+
+/**
+ * Group actions
+ */
+
+const toggleGroupChosenForDownload = (id, group) => ({
+    type: 'TOGGLE_GROUP_CHOSEN_FOR_DOWNLOAD',
+    id,
+    group
+});
+
+export const groupActions = {
+    toggleGroupChosenForDownload
 };
