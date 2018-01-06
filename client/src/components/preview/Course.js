@@ -127,7 +127,7 @@ class Course extends Component {
         console.log(this.props.course);
         const { course } = this.props;
 
-        const teachings = course._opsi_opryhmat; // TODO: filter only the ones we want to include
+        const teachings = course._opsi_opryhmat;
 
         return (
             <div className="course-wrapper">
