@@ -3,9 +3,21 @@
     margin: 10px 10px 10px 0;
     padding: 10px;
     background-color: white;
+    opacity: .7;
 
     &:nth-child(1) {
         margin-left: 10px;
+    }
+
+    .lessons-card-select-container {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        font-size: 1rem;
+
+        span {
+            margin-right: 10px;
+        }
     }
 
     .lessons-card-header {
@@ -27,5 +39,13 @@
         list-style-type: none;
         padding: 0;
         margin: 0;
+    }
+
+    &.selected {
+        opacity: 1;
+
+        .lessons-card-header h3 {
+            color: #4caf50;
+        }
     }
 }

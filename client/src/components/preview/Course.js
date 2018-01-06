@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LessonsCard from './LessonsCard';
+import DownloadBtn from './downloadBtn';
 import './Course.scss';
 
 class Course extends Component {
@@ -34,9 +35,9 @@ class Course extends Component {
                         const start = lesson.start;
                         const end = lesson.end;
                         start.setHours(exceptionLesson.alkutunnit);
-                        start.setMinutes(exceptionLesson.alkuminuutit || 0); // TODO: check if this is correct
+                        start.setMinutes(exceptionLesson.alkuminuutit || 0);
                         end.setHours(exceptionLesson.lopputunnit);
-                        end.setMinutes(exceptionLesson.loppuminuutit || 0); // TODO: check if this is correct
+                        end.setMinutes(exceptionLesson.loppuminuutit || 0);
                         filteredLessons.push({
                             ...lesson,
                             start,
@@ -71,7 +72,7 @@ class Course extends Component {
 
     parseOpsiRyhma(course, group) {
         const groupName = group.nimi || 'Lecture'; // nimi is like "Harjoitusryhmä 1", or empty string for lectures
-        const groupType = group.id_opsi_opetus; // TODO: map these with some sort of dict ("Luento-opetus", "pienryhmäopetus"...)
+        const groupType = group.id_opsi_opetus;
         const times = [];
 
         group.ajat.map(t => {
@@ -131,6 +132,12 @@ class Course extends Component {
         return (
             <div className="course-wrapper">
                 <div className="course-info">
+                    <p className="course-info-instructions">
+                        Choose the things you want to include in your calendar and press Download
+                    </p>
+
+                    <DownloadBtn />
+
                     <h2>{course.name} ({course.code})</h2>
                     {
                         (teachings.length === 0 || (teachings.length === 1 && teachings[0].ajat.length === 0))
@@ -145,6 +152,7 @@ class Course extends Component {
                             groupName={t.nimi || null}
                             groupType={t.id_opsi_opetus}
                             teachingLanguage={course.teachingLanguage}
+                            selected={t.selected}
                             key={Math.random()}
                         />
                     ))}

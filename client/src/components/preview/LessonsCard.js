@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import Lesson from './Lesson';
 import './LessonsCard.scss';
 
@@ -47,9 +48,18 @@ const lessonIdCodes = {
 
 const lang = teachingLanguage => teachingLanguage === 'fi' ? 'fi' : 'en';
 
-const LessonsCard = ({ lessons, groupName, groupType, teachingLanguage }) => (
+const LessonsCard = ({ lessons, groupName, groupType, teachingLanguage, selected, toggleSelected }) => (
     lessons && // this ensures we don't render an empty LessonsCard
-    <div className="lessons-card">
+    <div className={classNames('lessons-card', { 'selected': selected })}>
+        <div className="lessons-card-select-container">
+            <span>Select</span>
+            <input
+                name="select-toggle"
+                type="checkbox"
+                checked={selected}
+                onChange={() => window.alert('todo')}
+            />
+        </div>
         <div className="lessons-card-header">
             <h3>{lessonIdCodes[groupType][lang(teachingLanguage)]}</h3>
             <h4>{groupName || null}</h4>
