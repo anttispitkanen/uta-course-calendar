@@ -19,6 +19,7 @@ function* fetchCourse() {
         const id = yield select(state => state.searchReducer.id);
         const course = yield call(courseFetcher, id);
         if (course.error) throw Error();
+        injectSelected(course);
         yield put(courseActions.courseFetchSuccess(course));
     } catch (e) {
         yield put(courseActions.courseFetchError());
@@ -39,3 +40,9 @@ const courseFetcher = id => (
         throw Error();
     })
 );
+
+// this function injects the selected-attribute that's used in UI state
+const injectSelected = course => {
+    course._opsi_opryhmat.map(o => o.selected = false);
+    return course;
+}
