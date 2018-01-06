@@ -64,3 +64,22 @@ function* toggleCourse(action) {
         console.error(e);
     }
 }
+
+/**
+ * Download sagas
+ */
+
+// watcher saga
+export function* watchSendForDownload() {
+    yield takeEvery('SEND_FOR_DOWNLOAD', sendForDownload);
+}
+
+// worker saga
+function* sendForDownload() {
+    try {
+        const groups = yield select(state => state.chosenGroupsReducer);
+        console.log(groups);
+    } catch (e) {
+        console.error(e);
+    }
+}

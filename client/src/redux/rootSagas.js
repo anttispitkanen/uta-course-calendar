@@ -2,12 +2,14 @@ import { all } from 'redux-saga/effects';
 
 import {
     watchFetchCourse,
-    watchToggleCourse
+    watchToggleCourse,
+    watchSendForDownload
 } from './sagas';
 
 export default function* appSaga() {
     yield all([
         watchFetchCourse(),
-        watchToggleCourse()
+        watchToggleCourse(),
+        watchSendForDownload()
     ]);
 }

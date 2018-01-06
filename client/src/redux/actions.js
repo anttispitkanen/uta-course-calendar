@@ -61,3 +61,15 @@ const toggleGroupChosenForDownload = (id, group) => ({
 export const groupActions = {
     toggleGroupChosenForDownload
 };
+
+/**
+ * Download actions
+ */
+
+const sendForDownload = () => ({
+    type: 'SEND_FOR_DOWNLOAD'
+});
+
+export const downloadActions = {
+    sendForDownload
+};
