@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LessonsCard from './LessonsCard';
+import LessonsCard from './lessonsCard';
 import DownloadBtn from './downloadBtn';
 import './Course.scss';
 
@@ -124,9 +124,7 @@ class Course extends Component {
     }
 
     render() {
-        console.log(this.props.course);
         const { course } = this.props;
-
         const teachings = course._opsi_opryhmat;
 
         return (
@@ -153,7 +151,8 @@ class Course extends Component {
                             groupType={t.id_opsi_opetus}
                             teachingLanguage={course.teachingLanguage}
                             selected={t.selected}
-                            key={Math.random()}
+                            id={t.id}
+                            key={t.id}
                         />
                     ))}
                 </div>

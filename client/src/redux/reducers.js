@@ -65,6 +65,22 @@ export const courseReducer = (state = initialCourseState, action) => {
                 course: action.course
             };
 
+        case 'TOGGLE_GROUP_SELECTED':
+            const id = action.id;
+            return {
+                ...state,
+                course: {
+                    ...state.course,
+                    _opsi_opryhmat: state.course._opsi_opryhmat.map(r => {
+                        if (r.id === id) {
+                            return { ...r, selected: !r.selected };
+                        } else {
+                            return r;
+                        }
+                    })
+                }
+            };
+
         default:
             return state;
     }

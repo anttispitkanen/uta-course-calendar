@@ -35,8 +35,14 @@ const courseFetchSuccess = course => ({
     course
 });
 
+const toggleGroupSelected = id => ({
+    type: 'TOGGLE_GROUP_SELECTED',
+    id
+});
+
 export const courseActions = {
     courseFetch,
     courseFetchError,
-    courseFetchSuccess
+    courseFetchSuccess,
+    toggleGroupSelected
 };
