@@ -127,7 +127,10 @@ class Course extends Component {
             <div className="course-wrapper">
                 <div className="course-info">
                     <h2>{course.name} ({course.code})</h2>
-                    {teachings.length === 0 && (<span>This course seems to have no lectures</span>)}
+                    {
+                        (teachings.length === 0 || (teachings.length === 1 && teachings[0].ajat.length === 0))
+                        && (<span>This course seems to have no lectures</span>)
+                    }
                 </div>
 
                 <div className="lessons-cards-wrapper">
