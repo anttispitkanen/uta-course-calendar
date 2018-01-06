@@ -78,8 +78,29 @@ export function* watchSendForDownload() {
 function* sendForDownload() {
     try {
         const groups = yield select(state => state.chosenGroupsReducer);
-        console.log(groups);
+        const response = yield call(downloadSender, groups);
+        console.log(response);
     } catch (e) {
         console.error(e);
     }
 }
+
+const downloadSender = groups => (
+    fetch('/download', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            groups
+        })
+    })
+    .then(res => {
+        if (res.ok) {
+            return res.json();
+        } else {
+            throw Error();
+        }
+    })
+    .catch(err => { throw Error() })
+);

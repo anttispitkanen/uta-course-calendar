@@ -81,3 +81,8 @@ app.get('/calendar', async (req, res) => {
         res.json({ error: e });
     }
 });
+
+app.post('/download', async (req, res) => {
+    console.log(req.body.groups);
+    res.json({ message: 'vastaanotettu :D' });
+});
