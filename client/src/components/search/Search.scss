@@ -73,6 +73,7 @@ $btn-green: rgb(76, 175, 80);
                 color: #EEE;
                 font-weight: 200;
                 background-color: $btn-green;
+                cursor: pointer;
 
                 &:disabled {
                     opacity: .7;
@@ -80,10 +81,6 @@ $btn-green: rgb(76, 175, 80);
 
                 &:focus {
                     outline: none;
-                }
-
-                &:hover {
-                    cursor: pointer;
                 }
             }
 
