@@ -21,8 +21,13 @@ class Course extends Component {
             if (exceptionLesson) {
                 additionalInfo = exceptionLesson.lisatiedot;
                 location = exceptionLesson.paikka;
+                const additionalLoweCase = additionalInfo.toLowerCase();
 
-                if (/ei opetusta/.test(additionalInfo.toLowerCase()) || /no lectures/.test(additionalInfo.toLowerCase())) {
+                if (/ei opetusta/.test(additionalLoweCase) ||
+                    /ei tapaamista/.test(additionalLoweCase) ||
+                    /no lectures/.test(additionalLoweCase) ||
+                    /no meeting/.test(additionalLoweCase))
+                {
                     return;
                 } else if (location) {
                     if (exceptionLesson.alkutunnit && exceptionLesson.lopputunnit) {
@@ -139,6 +144,7 @@ class Course extends Component {
                             lessons={this.parseOpsiRyhma(course, t)}
                             groupName={t.nimi || null}
                             groupType={t.id_opsi_opetus}
+                            teachingLanguage={course.teachingLanguage}
                             key={Math.random()}
                         />
                     ))}
