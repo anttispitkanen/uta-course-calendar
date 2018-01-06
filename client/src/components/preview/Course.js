@@ -3,6 +3,51 @@ import LessonsCard from './lessonsCard';
 import DownloadBtn from './downloadBtn';
 import './Course.scss';
 
+const lessonIdCodes = {
+    1: {
+        fi: 'Luennot',
+        en: 'Lectures'
+    },
+    2: {
+        fi: 'Pienryhmäopetus',
+        en: 'Tutorials'
+    },
+    3: { // TODO: find this out (could be essay?)
+        fi: null,
+        en: null
+    },
+    4: {
+        fi: 'Ryhmätyöskentely',
+        en: 'Group work'
+    },
+    5: {
+        fi: 'Itsenäinen työskentely',
+        en: 'Independent work'
+    },
+    6: {
+        fi: 'Seminaari',
+        en: 'Seminar'
+    },
+    7: {
+        fi: 'Harjoitukset',
+        en: 'Exercises'
+    },
+    8: {
+        fi: 'Lukupiiri',
+        en: 'Study circle'
+    },
+    9: { // TODO: find this out (if exists)
+        fi: null,
+        en: null
+    },
+    10: { // TODO: find this out (if exists)
+        fi: null,
+        en: null
+    }
+};
+
+const lang = teachingLanguage => teachingLanguage === 'fi' ? 'fi' : 'en';
+
 class Course extends Component {
     applyExceptions(teaching, lessons) {
         const exceptionTimes = teaching.poikkeusajat;
@@ -12,6 +57,7 @@ class Course extends Component {
         let exceptionLesson;
         const filteredLessons = [];
 
+        // eslint-disable-next-line
         lessons.map(lesson => {
             startTime = new Date(lesson.start);
 
@@ -29,7 +75,7 @@ class Course extends Component {
                     /no lectures/.test(additionalLoweCase) ||
                     /no meeting/.test(additionalLoweCase))
                 {
-                    return;
+                    return; // eslint-disable-line
                 } else if (location) {
                     if (exceptionLesson.alkutunnit && exceptionLesson.lopputunnit) {
                         const start = lesson.start;
@@ -61,29 +107,30 @@ class Course extends Component {
         return filteredLessons;
     }
 
-    parseLessonArrays(times, course) {
-        const t = times.map(time => (
-            this.applyExceptions(time, this.parseLessonArray(time, course))
-        ))
-        // .reduce((a, b) => a.concat(b));
+    // parseLessonArrays(times, course) {
+    //     const t = times.map(time => (
+    //         this.applyExceptions(time, this.parseLessonArray(time, course))
+    //     ))
+    //     // .reduce((a, b) => a.concat(b));
 
-        return t;
-    }
+    //     return t;
+    // }
 
     parseOpsiRyhma(course, group) {
+        const teachingLanguage = course.teachingLanguage;
         const groupName = group.nimi || 'Lecture'; // nimi is like "Harjoitusryhmä 1", or empty string for lectures
-        const groupType = group.id_opsi_opetus;
+        const groupType = lessonIdCodes[group.id_opsi_opetus][lang(teachingLanguage)];
         const times = [];
 
-        group.ajat.map(t => {
-            times.push(this.applyExceptions(t, this.newParseLessonArray(t, course, groupName, groupType)))
-        });
+        group.ajat.map(t => (
+            times.push(this.applyExceptions(t, this.parseLessonArray(t, course, groupName, groupType)))
+        ));
 
         // return null if there are no lessons (which is apparently a bug in the UTA system)
         return times.length > 0 ? times : null;
     }
 
-    newParseLessonArray(teaching, course, groupName, groupType) {
+    parseLessonArray(teaching, course, groupName, groupType) {
         const lessons = [];
         const iDate = new Date(teaching.alkuaika);
         const startHours = teaching.alkutunnit;
@@ -148,8 +195,7 @@ class Course extends Component {
                         <LessonsCard
                             lessons={this.parseOpsiRyhma(course, t)}
                             groupName={t.nimi || null}
-                            groupType={t.id_opsi_opetus}
-                            teachingLanguage={course.teachingLanguage}
+                            groupType={lessonIdCodes[t.id_opsi_opetus][lang(course.teachingLanguage)]}
                             selected={t.selected}
                             id={t.id}
                             key={t.id}
