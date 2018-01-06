@@ -10,11 +10,16 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding: 20px;
 
         h2 {
             text-align: center;
             padding: 40px 0;
             font-size: 1.7rem;
+        }
+
+        span {
+            text-align: center;
         }
     }
 

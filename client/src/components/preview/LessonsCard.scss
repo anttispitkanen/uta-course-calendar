@@ -1,8 +1,12 @@
 .lessons-card {
     border: 1px solid #DDD;
-    margin: 10px;
+    margin: 10px 10px 10px 0;
     padding: 10px;
     background-color: white;
+
+    &:nth-child(1) {
+        margin-left: 10px;
+    }
 
     .lessons-card-header {
         h3 {
