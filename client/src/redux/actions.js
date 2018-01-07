@@ -52,6 +52,10 @@ export const courseActions = {
  * Group actions
  */
 
+const clearChosenGroups = () => ({
+    type: 'CLEAR_CHOSEN_GROUPS'
+});
+
 const toggleGroupChosenForDownload = (id, group) => ({
     type: 'TOGGLE_GROUP_CHOSEN_FOR_DOWNLOAD',
     id,
@@ -59,6 +63,7 @@ const toggleGroupChosenForDownload = (id, group) => ({
 });
 
 export const groupActions = {
+    clearChosenGroups,
     toggleGroupChosenForDownload
 };
 

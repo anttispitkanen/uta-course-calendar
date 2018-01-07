@@ -91,6 +91,9 @@ export const courseReducer = (state = initialCourseState, action) => {
  */
 export const chosenGroupsReducer = (state = [], action) => {
     switch (action.type) {
+        case 'CLEAR_CHOSEN_GROUPS':
+            return [];
+
         case 'TOGGLE_GROUP_CHOSEN_FOR_DOWNLOAD':
             if (state.find(a => a.id === action.id)) {
                 return state.filter(a => a.id !== action.id);

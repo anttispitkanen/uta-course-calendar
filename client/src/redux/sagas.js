@@ -21,6 +21,7 @@ function* fetchCourse() {
         if (course.error) throw Error();
         injectSelected(course);
         yield put(courseActions.courseFetchSuccess(course));
+        yield put(groupActions.clearChosenGroups());
     } catch (e) {
         yield put(courseActions.courseFetchError());
     }
