@@ -36,7 +36,11 @@ class Search extends Component {
             // try to find the id param and return it, if no id found, throw error
             try {
                 const url = new URL(input);
-                const id = url.searchParams.get('id');
+                const search = url.search;
+                if (!/id=/.test(search)) throw new Error('Url invalid');
+                const id = search.split('id=')[1].split('&')[0];
+                /* use this instead of the not-widely-enough-supported URL.searchParams */
+
                 if (id) {
                     if(isNaN(parseInt(id, 10))) {
                         // if there is an id but it can't be parsed as int, throw error
