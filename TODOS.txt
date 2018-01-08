@@ -1,13 +1,19 @@
-* käyttöliittymä voisi olla sellainen, että käyttäjä copypasteaa kurssin sivun urlin opetusohjelmasta,
-ja parsitaan siitä id, jolla haetaan toteutus
 
 * muistutukset?
+    * vaatiiko UID:n tapahtumille?
 
-* harjoitusryhmän valinta?
+* "How to use?"
+    * modaali, käyttöohjeet
+    * FAQ joko samaan yhteyteen tai erillisenä
 
-* opetustyypit ("id_opsi_opetus")
-    * luento-opetus = 1
-    * pienryhmäopetus = 2
-    * seminaari = 6
-    * harjoitusryhmä = 7
-    * ? = ?...
+* Joku kunnon error-modaali jos virheellinen input
+
+* joku logo/ikoni
+    * manifesti
+    * og-tagit
+
+* sertifikaattiasia
+
+* deploy Herokuun
+
+* landing pagen styling mobiiliin sopivaksi
