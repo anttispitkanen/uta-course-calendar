@@ -4,9 +4,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex: 0 0 auto;
 
     .course-info {
         display: flex;
+        flex: 0 0 auto;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -15,6 +17,7 @@
 
         .course-info-instructions {
             font-size: 1.2rem;
+            z-index: 99;
         }
 
         h2 {
