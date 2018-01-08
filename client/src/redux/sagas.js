@@ -4,6 +4,7 @@
 import fileDownload from 'js-file-download';
 import { takeEvery, put, call, select } from 'redux-saga/effects';
 import { courseActions, groupActions } from './actions';
+import { calendarBuilder } from '../utils/calendarBuilder';
 
 /**
  * Course sagas
@@ -80,35 +81,11 @@ export function* watchSendForDownload() {
 function* sendForDownload() {
     try {
         const groups = yield select(state => state.chosenGroupsReducer);
-        yield call(downloadSender, groups);
+        const code = yield select(state => state.courseReducer.course.code);
+        const calendar = yield call(calendarBuilder, groups);
+        const fileName = `Calendar-${code}-${Math.floor(Math.random() * 100000)}.ics`;
+        return fileDownload(calendar.toString(), fileName);
     } catch (e) {
         console.error(e);
     }
 }
-
-const downloadSender = groups => (
-    fetch('/download', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            groups
-        })
-    })
-    .then(async res => {
-        if (res.ok) {
-            const file = await res.text();
-            /*
-            TODO:
-            * * build the whole file in client instead of server
-            * * the name could be formed using the course code + a random number,
-            * * so e.g. "MTTMP3-12345.ics"
-            */
-            return fileDownload(file, 'UTA-calendar.ics');
-        } else {
-            throw Error();
-        }
-    })
-    .catch(err => { throw Error() })
-);
