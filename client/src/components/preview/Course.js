@@ -118,7 +118,7 @@ class Course extends Component {
 
     parseOpsiRyhma(course, group) {
         const teachingLanguage = course.teachingLanguage;
-        const groupName = group.nimi || 'Lecture'; // nimi is like "Harjoitusryhmä 1", or empty string for lectures
+        const groupName = group.nimi || null; // nimi is like "Harjoitusryhmä 1", or empty string for lectures
         const groupType = lessonIdCodes[group.id_opsi_opetus][lang(teachingLanguage)];
         const times = [];
 
