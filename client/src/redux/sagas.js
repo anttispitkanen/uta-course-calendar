@@ -1,6 +1,7 @@
 /**
  * Sagas
  */
+import fileDownload from 'js-file-download';
 import { takeEvery, put, call, select } from 'redux-saga/effects';
 import { courseActions, groupActions } from './actions';
 
@@ -79,8 +80,7 @@ export function* watchSendForDownload() {
 function* sendForDownload() {
     try {
         const groups = yield select(state => state.chosenGroupsReducer);
-        const response = yield call(downloadSender, groups);
-        console.log(response);
+        yield call(downloadSender, groups);
     } catch (e) {
         console.error(e);
     }
@@ -96,9 +96,16 @@ const downloadSender = groups => (
             groups
         })
     })
-    .then(res => {
+    .then(async res => {
         if (res.ok) {
-            return res.json();
+            const file = await res.text();
+            /*
+            TODO:
+            * * build the whole file in client instead of server
+            * * the name could be formed using the course code + a random number,
+            * * so e.g. "MTTMP3-12345.ics"
+            */
+            return fileDownload(file, 'UTA-calendar.ics');
         } else {
             throw Error();
         }
