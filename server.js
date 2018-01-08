@@ -8,6 +8,7 @@ const fs = require('fs');
 
 const courses = require('./courses.json');
 const { parseLessons, parseCalendar } = require('./parseCalendar');
+const { calendarBuilder } = require('./calendarBuilder');
 
 const {
     writeFilePromise,
@@ -83,6 +84,17 @@ app.get('/calendar', async (req, res) => {
 });
 
 app.post('/download', async (req, res) => {
-    console.log(req.body.groups);
-    res.json({ message: 'vastaanotettu :D' });
+    try {
+        const { groups } = req.body;
+        const calendar = calendarBuilder(groups);
+        const FILE_PATH = './temp/calendar-' + Math.floor(Math.random() * 10000000) + '.ics';
+
+        await writeFilePromise(fs, FILE_PATH, calendar);
+        await downloadPromise(res, FILE_PATH);
+        await unlinkPromise(fs, FILE_PATH);
+        // res.json({ message: 'All clear' });
+    } catch (e) {
+        console.error(e);
+        res.status(400).json({ error: e });
+    }
 });
