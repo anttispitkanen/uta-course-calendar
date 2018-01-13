@@ -87,7 +87,7 @@ class Search extends Component {
                             disabled={!this.state.value}
                         />
 
-                        <Link to="/help" className="search-help-link">
+                        <Link to="/howto" className="search-help-link">
                             How to use?
                         </Link>
                     </div>
