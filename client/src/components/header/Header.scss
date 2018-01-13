@@ -7,16 +7,22 @@
     top: 0;
     padding: 20px;
 
-    .main-header-heading {
-        color: #222;
-        font-size: 1.5rem;
-        font-weight: 200;
-        padding: 2\0px;
-        margin: 0;
-        align-self: center;
-    }
+    .main-header-logo-heading-wrapper {
+        display: flex;
+        flex-direction: row;
 
-    .main-header-logo {
-        height: 35px;
+        .main-header-logo {
+            height: 35px;
+        }
+
+        .main-header-heading {
+            color: #222;
+            font-size: 1.5rem;
+            font-weight: 200;
+            padding: 2\0px;
+            margin: 0;
+            margin-left: 10px;
+            align-self: center;
+        }
     }
 }
