@@ -98,3 +98,11 @@ $btn-green: rgb(76, 175, 80);
         }
     }
 }
+
+@media screen and (max-width: 500px) {
+    .search {
+        .call-to-action {
+            font-size: 1rem;
+        }
+    }
+}
