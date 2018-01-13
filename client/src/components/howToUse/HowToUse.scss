@@ -1,0 +1,25 @@
+$green: rgb(76, 175, 80);
+
+.howto-wrapper {
+    position: fixed;
+    z-index: 10000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    height: 80vh;
+    width: 80vw;
+
+    .howto-close-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+
+        .howto-close {
+            color: $green;
+            font-size: 2rem;
+            padding: 10px;
+            cursor: pointer;
+        }
+    }
+}
