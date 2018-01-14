@@ -1,14 +1,20 @@
 $green: rgb(76, 175, 80);
 
 .howto-wrapper {
-    position: fixed;
+    position: absolute;
     z-index: 10000;
-    top: 50%;
+    top: 50px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     background-color: white;
-    height: 80vh;
-    width: 80vw;
+    min-height: 90vh;
+    max-height: 190vh;
+    overflow: scroll;
+    width: 90vw;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.5);
 
     .howto-close-wrapper {
         width: 100%;
@@ -18,8 +24,50 @@ $green: rgb(76, 175, 80);
         .howto-close {
             color: $green;
             font-size: 2rem;
-            padding: 10px;
             cursor: pointer;
+        }
+    }
+
+    h2 {
+        color: $green;
+        margin-bottom: 40px;
+        font-size: 2rem;
+    }
+
+    .howto-section {
+        margin-bottom: 60px;
+
+        .howto-section-number {
+            color: $green;
+            font-style: normal;
+            font-size: 3rem;
+        }
+
+        .howto-section-text {
+            a {
+                color: $green;
+                text-decoration: none;
+            }
+        }
+
+        .howto-image {
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .howto-wrapper {
+        padding: 20px;
+
+        h2 {
+            font-size: 1.4rem;
+        }
+
+        .howto-section {
+            .howto-section-number {
+                font-size: 2rem;
+            }
         }
     }
 }
