@@ -32,6 +32,7 @@ class HowToUse extends Component {
                         Find the course you want to have in your calendar in
                         the <TeachingLink lang="en">UTA teaching schedule
                         </TeachingLink> (<TeachingLink lang="fi">Finnish one here</TeachingLink>).
+                        Make sure you pick the course from the correct study period.
                     </p>
                 </div>
 
@@ -55,7 +56,7 @@ class HowToUse extends Component {
                     <i className="howto-section-number">4.</i>
                     <p className="howto-section-text">
                         Select the groups you wish to include in your calendar
-                        (lectures, study groups, seminars...) and click "Download"
+                        (lectures, exercises, seminars...) and click "Download"
                         to download the calendar as an .ics-file.
                     </p>
                     <img className="howto-image" src={example3} alt="example 3"/>
@@ -65,11 +66,12 @@ class HowToUse extends Component {
                     <i className="howto-section-number">5.</i>
                     <p className="howto-section-text">
                         Import the .ics-file to your calendar of choice, and voilà!
-                        All the classes are automatically added to your calendar as events!
+                        All the classes you chose are automatically added to your calendar as events!
                     </p>
                     <img className="howto-image" src={example4} alt="example 4"/>
                     <p>
-                        Google will help you here with instructions if needed.
+                        If you need help with importing the file to your calendar,
+                        Google will help you.
                     </p>
                 </div>
             </div>
