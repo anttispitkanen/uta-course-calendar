@@ -6,6 +6,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 
+/* courses.json automatically created with "npm run update" */
 const courses = require('./courses.json');
 
 const app = express();
