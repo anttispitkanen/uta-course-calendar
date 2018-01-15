@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import onClickOutside from 'react-onclickoutside';
 import help1 from '../../images/help-1.png';
 import './Help.scss';
@@ -28,7 +29,8 @@ class Help extends Component {
                     </h3>
                     <p className="help-section-text">
                         This is an app that helps you build an electronic calendar
-                        out of your studies in University of Tampere easily.
+                        out of your studies in University of Tampere easily. See <Link to="/howto">
+                        How to use</Link> for instructions.
                     </p>
                 </div>
 
