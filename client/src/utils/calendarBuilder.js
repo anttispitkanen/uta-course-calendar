@@ -63,8 +63,8 @@ const parseLesson = lesson => new Component({
         new Property({
             name: DESCRIPTION,
             value: `${lesson.groupType}`
-                    + (lesson.groupName ? `${lesson.groupName}` : '')
-                    + (lesson.additionalInfo ? `\\n${lesson.additionalInfo}` : '')
+                    + (lesson.groupName ? `\n${lesson.groupName}` : '')
+                    + (lesson.additionalInfo ? `\n${lesson.additionalInfo}` : '')
         }),
         new Property({
             name: LOCATION,
