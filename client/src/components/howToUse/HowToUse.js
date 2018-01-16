@@ -1,5 +1,6 @@
 import React, { Component} from 'react';
 import onClickOutside from 'react-onclickoutside';
+import { A } from '../../utils/linkHelper';
 import example1 from '../../images/example-1.png';
 import example2 from '../../images/example-2.png';
 import example3 from '../../images/example-3.png';
@@ -55,7 +56,7 @@ class HowToUse extends Component {
                 <div className="howto-section">
                     <i className="howto-section-number">4.</i>
                     <p className="howto-section-text">
-                        Select the groups you wish to include in your calendar
+                        Select the groups you wish to have in your calendar
                         (lectures, exercises, seminars...) and click "Download"
                         to download the calendar as an .ics-file.
                     </p>
@@ -70,8 +71,9 @@ class HowToUse extends Component {
                     </p>
                     <img className="howto-image" src={example4} alt="example 4"/>
                     <p>
-                        If you need help with importing the file to your calendar,
-                        Google will help you.
+                        Instructions for importing to <A href="https://support.google.com/calendar/answer/37118">
+                        Google Calendar</A>. If you use another calendar app, google
+                        for instructions if needed.
                     </p>
                 </div>
             </div>

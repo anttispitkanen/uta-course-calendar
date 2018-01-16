@@ -1,23 +1,19 @@
 import React from 'react';
+import { A } from '../../utils/linkHelper';
 import './Footer.scss';
 import UTALogo from '../../images/utaen-small.png';
 
 const Footer = () => (
     <footer className="main-footer">
-        <a href="https://uta.fi"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
+        <A href="https://uta.fi">
             <img className="footer-uta-logo"
                     src={UTALogo}
                     alt="University of Tampere logo" />
-        </a>
+        </A>
         <div className="copyright">
-            © 2018 <a href="https://github.com/anttispitkanen"
-                        target="_blank"
-                        rel="noopener noreferrer"
+            © 2018 <A href="https://github.com/anttispitkanen"
                         className="footer-link"
-                    >Antti Pitkänen</a>
+                    >Antti Pitkänen</A>
         </div>
     </footer>
 );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import onClickOutside from 'react-onclickoutside';
+import { A } from '../../utils/linkHelper';
 import help1 from '../../images/help-1.png';
 import './Help.scss';
 
@@ -197,10 +198,3 @@ class Help extends Component {
 }
 
 export default onClickOutside(Help);
-
-/* Link helper component */
-const A = ({ href, children }) => (
-    <a href={href} target="_blank" rel="noopener noreferer">
-        { children }
-    </a>
-);
