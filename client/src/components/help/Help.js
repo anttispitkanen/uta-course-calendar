@@ -28,9 +28,12 @@ class Help extends Component {
                         What is this?
                     </h3>
                     <p className="help-section-text">
-                        This is an app that helps you build an electronic calendar
-                        out of your studies in University of Tampere easily. See <Link to="/howto">
-                        How to use</Link> for instructions.
+                        This is an app that helps students build an electronic calendar
+                        for their studies in <A href="https://uta.fi">University of Tampere
+                        </A> by just copying the course URL and pasting it to this app.
+                    </p>
+                    <p className="help-section-text">
+                        See <Link to="/howto">how to use</Link> for instructions.
                     </p>
                 </div>
 
