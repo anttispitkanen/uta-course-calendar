@@ -40,7 +40,25 @@ class Help extends Component {
                     </h3>
                     <p className="help-section-text">
                         I study at UTA myself and got tired of writing my classes in
-                        my calendar by hand, so I built this.
+                        my calendar by hand, so I built this. I happily spent hours to save a few minutes.
+                        No more writing by hand!
+                    </p>
+                </div>
+
+                <div className="help-section">
+                    <h3 className="help-section-heading">
+                        Is this official?
+                    </h3>
+                    <p className="help-section-text">
+                        This application is built and maintained by a third party (=a UTA student) and
+                        is not an official tool provided by University of Tampere.
+                    </p>
+                    <p className="help-section-text">
+                        The course schedule data that this application uses is provided by University of
+                        Tampere <A href="https://opendata.uta.fi">open data API</A>. The course information
+                        is the same information that you can find in the official University of
+                        Tampere <A href="https://www10.uta.fi/opas/teaching/index.htm?uiLang=en&kieli=en">
+                        teaching schedule</A>. So in that way the schedule data is official.
                     </p>
                 </div>
 
@@ -51,8 +69,8 @@ class Help extends Component {
                     <p className="help-section-text">
                         The course schedule information is fetched from the <A href="https://opendata.uta.fi">
                         open data API</A> of University of Tampere. The chosen lectures,
-                        exercises or other lessons are then parsed to an .ics-file (ICAL,
-                        standard calendar format), that can be imported to basically any
+                        exercises or other lessons are then parsed to an <A href="https://en.wikipedia.org/wiki/ICalendar">
+                        .ics-file</A> (ICAL, standard calendar format), that can be imported to basically any
                         electronic calendar.
                     </p>
                     <p className="help-section-text">
@@ -89,10 +107,12 @@ class Help extends Component {
                     <p className="help-section-text">
                         The calendar is correct in cases where the course teacher has inserted the schedule correctly.
                         This app gets all the information it has through the UTA open data API, which is updated daily.
+                        That is the same information that is displayed in the official teaching schedules.
                     </p>
                     <p className="help-section-text">
-                        However, I can't promise that the teachers or the API
-                        are always 100% correct, so it's advised that you don't trust it blindly.
+                        However, I can't promise that the teachers or the API are always 100% correct,
+                        so it's advised that you don't trust it blindly. As the creator I take no responsibility
+                        of the validity of the information.
                     </p>
                 </div>
 
@@ -102,6 +122,7 @@ class Help extends Component {
                     </h3>
                     <p className="help-section-text">
                         No. But you can download as many subsequent courses as you wish, and import them separately to your calendar.
+                        This is in many ways much more convenient.
                     </p>
                 </div>
 
@@ -114,7 +135,16 @@ class Help extends Component {
                     </p>
                     <p className="help-section-text">
                         For example, you can download the lectures before the course starts. Then, when you get to know
-                        your (possible) exercise group, you can download that.
+                        your (possible) exercise group, you can download that and add it to your calendar.
+                    </p>
+                </div>
+
+                <div className="help-section">
+                    <h3 className="help-section-heading">
+                        How can I remove the course from my own calendar?
+                    </h3>
+                    <p className="help-section-text">
+                        You can delete the events (=lectures, exercises...) like you would delete any other calendar event.
                     </p>
                 </div>
 
@@ -123,12 +153,14 @@ class Help extends Component {
                         How to use a calendar app?
                     </h3>
                     <p className="help-section-text">
-                        Google will help you.
+                        There are many calendar apps to choose from, google instructions if you need help. I
+                        recommend Google Calendar myself, as it's easy to use both on mobile and in a browser
+                        and works really well.
                     </p>
                     <p className="help-section-text">
-                        However, within the app of your choice, I would advise you to create a separate calendar
-                        for each separate course. Then you can neatly color code different courses so you can
-                        easily make sense of your complete calendar.
+                        Within the app of your choice, I would advise you to create a separate calendar
+                        for each separate course. Then you can neatly color code and filter different courses
+                        so you can easily make sense of your complete calendar.
                     </p>
                 </div>
 
