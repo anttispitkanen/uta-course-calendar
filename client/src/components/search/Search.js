@@ -65,8 +65,7 @@ class Search extends Component {
         return (
             <div className="search">
                 <div className="call-to-action">
-                    <p>Studying in University of Tampere?</p>
-                    <p>Create your study calendar easily!</p>
+                    <p>- Your study calendar with one click -</p>
                 </div>
 
                 <form className="search-form" onSubmit={this.handleSubmit}>
