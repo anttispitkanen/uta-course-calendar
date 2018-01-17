@@ -1,7 +1,8 @@
-$search-padding: 12px;
+@import '../../styles/commons';
+
+$search-text-padding: 12px;
 $search-grid-padding: 25px;
-$search-text-color: #222;
-$btn-green: rgb(76, 175, 80);
+$search-button-side-padding: 24px;
 
 .search {
     background-color: rgb(197, 208, 194);
@@ -15,7 +16,7 @@ $btn-green: rgb(76, 175, 80);
     padding: 10px;
     height: 100vh;
     min-height: 240px;
-    color: $search-text-color;
+    color: $grey-text;
 
     .call-to-action {
         position: absolute;
@@ -39,26 +40,26 @@ $btn-green: rgb(76, 175, 80);
         min-height: 150px;
         padding: $search-grid-padding;
         background-color: white;
-        box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.5);
+        box-shadow: $small-shadow;
 
         .search-label {
-            padding: $search-padding;
+            padding: $search-text-padding;
             align-self: flex-start;
         }
 
         .search-text {
             font-size: 1rem;
-            padding: $search-padding;
+            padding: $search-text-padding;
             border: none;
             width: 100%;
-            color: $search-text-color;
+            color: $grey-text;
             background-color: rgba(0, 0, 0, 0);
             border-bottom: 1px solid #666;
-            transition: border-bottom-color 1s;
+            transition: border-bottom-color $transition-slow;
 
             &:focus {
                 outline: none;
-                border-bottom-color: $btn-green;
+                border-bottom-color: $green;
             }
         }
 
@@ -71,19 +72,19 @@ $btn-green: rgb(76, 175, 80);
 
             .search-submit-button {
                 margin: 0;
-                padding: $search-padding;
-                padding-left: 24px;
-                padding-right: 24px;
+                padding: $search-text-padding;
+                padding-left: $search-button-side-padding;
+                padding-right: $search-button-side-padding;
                 font-size: 1rem;
                 border: none;
                 border-radius: 50px;
-                color: #EEE;
+                color: $white-text;
                 font-weight: 300;
-                background-color: $btn-green;
+                background-color: $green;
                 cursor: pointer;
 
                 &:disabled {
-                    opacity: .7;
+                    opacity: $btn-disabled-opacity;
                 }
 
                 &:focus {
@@ -92,8 +93,8 @@ $btn-green: rgb(76, 175, 80);
             }
 
             .search-help-link {
-                padding: $search-padding;
-                color: $btn-green;
+                padding: $search-text-padding;
+                color: $green;
             }
         }
     }

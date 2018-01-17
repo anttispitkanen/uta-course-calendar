@@ -1,4 +1,4 @@
-$green: rgb(76, 175, 80);
+@import '../../styles/commons';
 
 .preview-placeholder {
     min-height: 100vh;
@@ -9,7 +9,7 @@ $green: rgb(76, 175, 80);
     align-items: center;
     font-size: 1.6rem;
     font-weight: 300;
-    color: #666;
+    color: $light-grey-text;
 
     .icon {
         margin: 30px;

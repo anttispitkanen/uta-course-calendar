@@ -1,5 +1,7 @@
+@import '../../styles/commons';
+
 .main-footer {
-    background-color: rgb(198, 68, 68);
+    background-color: $footer-color;
     color: white;
     font-weight: 300;
     display: flex;
