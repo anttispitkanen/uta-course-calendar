@@ -70,7 +70,7 @@ class HowToUse extends Component {
                         All the classes you chose are automatically added to your calendar as events!
                     </p>
                     <img className="howto-image" src={example4} alt="example 4"/>
-                    <p>
+                    <p className="howto-section-text">
                         Instructions for importing to <A href="https://support.google.com/calendar/answer/37118">
                         Google Calendar</A>. If you use another calendar app, google
                         for instructions if needed.
