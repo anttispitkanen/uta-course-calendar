@@ -118,6 +118,19 @@ class Help extends Component {
                         so it's advised that you don't trust it blindly. As the creator I take no responsibility
                         of the validity of the information.
                     </p>
+                    <p className="help-section-text">
+                        One thing that is often wrongly inserted into the system by teachers are exceptions to regular times
+                        (="lectures every monday but NOT 2.3." or something similar). If the possible exceptions are listed
+                        separately under the lessons in the University of Tampere teaching schedules, they are inserted
+                        correctly, and UTA course calendar should automatically apply those exceptions when building the
+                        calendar file.
+                    </p>
+                    <p className="help-section-text">
+                        Unfortunately there seem to be some courses where the exceptions are just written incorrectly in
+                        the "additional information" of a lecture, and in those cases UTA course calendar is not smart enough
+                        to apply those exceptions. In these cases the exceptions appear as text after the lesson details
+                        (and not as a list below them) in the University of Tampere teaching schedules.
+                    </p>
                 </div>
 
                 <div className="help-section">
@@ -145,10 +158,40 @@ class Help extends Component {
 
                 <div className="help-section">
                     <h3 className="help-section-heading">
+                        What if something about the course changes?
+                    </h3>
+                    <p className="help-section-text">
+                        If you have already downloaded the course and then something (times, locations) about it
+                        changes, those changes don't show automatically in your calendar app. There are however
+                        two easy ways to work around this problem.
+                    </p>
+                    <p className="help-section-text">
+                        If the time or location of a single lecture changes or if a single lecture is cancelled
+                        you can edit that event directly in your calendar.
+                    </p>
+                    <p className="help-section-text">
+                        If it's a bigger change, you can just delete the course from your calendar and download it
+                        again with the updated information. This is easy especially if you do as I do and recommend,
+                        and have separate calendars (withing the calendar app) for separate courses.
+                    </p>
+                    <p className="help-section-text">
+                        (Please note that the course data this app uses is updated once every day at approximately
+                        3am, so if a teacher updates a course today, those changes won't show in UTA course calendar
+                        until tomorrow.)
+                    </p>
+                </div>
+
+                <div className="help-section">
+                    <h3 className="help-section-heading">
                         How can I remove the course from my own calendar?
                     </h3>
                     <p className="help-section-text">
                         You can delete the events (=lectures, exercises...) like you would delete any other calendar event.
+                    </p>
+                    <p className="help-section-text">
+                        Also, if you have the course as its own calendar in the calendar app you use, you can delete the whole
+                        calendar, which will erase all the events inside the calendar. Please use caution though and don't
+                        delete calendars that you don't want deleted.
                     </p>
                 </div>
 
@@ -165,6 +208,19 @@ class Help extends Component {
                         Within the app of your choice, I would advise you to create a separate calendar
                         for each separate course. Then you can neatly color code and filter different courses
                         so you can easily make sense of your complete calendar.
+                    </p>
+                </div>
+
+                <div className="help-section">
+                    <h3 className="help-section-heading">
+                        What browser does this work on?
+                    </h3>
+                    <p className="help-section-text">
+                        UTA course calendar has been built and tested with the latest version of Chrome, desktop and mobile.
+                        Some testing has been done also on the latest desktop versions of Firefox and Safari.
+                    </p>
+                    <p className="help-section-text">
+                        The creator takes no responsibility of this working or not working on other browsers.
                     </p>
                 </div>
 
