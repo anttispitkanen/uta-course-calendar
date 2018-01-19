@@ -238,6 +238,17 @@ class Help extends Component {
 
                 <div className="help-section">
                     <h3 className="help-section-heading">
+                        "Wow this is awesome, can I share it?"
+                    </h3>
+                    <p className="help-section-text">
+                        Of course! UTA course calendar was built to help the students of University of Tampere,
+                        and I personally hope that as many people as possible will find it helpful. Feel free to
+                        share it to anyone, anywhere.
+                    </p>
+                </div>
+
+                <div className="help-section">
+                    <h3 className="help-section-heading">
                         Who built this?
                     </h3>
                     <p className="help-section-text">
