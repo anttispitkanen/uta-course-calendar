@@ -100,7 +100,9 @@ class Help extends Component {
                     <img className="help-image" src={help1} alt="example screenshot" />
                     <p className="help-section-text">
                         There are also cases where the teacher has not inserted the information correctly.
-                        In such case this app cannot create the calendar.
+                        In such case this app cannot create the calendar. An example would be when a teacher
+                        has written the schedule as text in the additional details section of the page. These
+                        cases don't seem to be many, but I did see some when browsing through the courses.
                     </p>
                 </div>
 
