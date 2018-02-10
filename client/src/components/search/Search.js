@@ -68,7 +68,7 @@ class Search extends Component {
                     <p>- Your study calendar with one click -</p>
                 </div>
 
-                <form className="search-form" onSubmit={this.handleSubmit}>
+                <form id="search-form" className="search-form" onSubmit={this.handleSubmit}>
                     <label className="search-label">Search for the course:</label>
                     <input
                         type="text"
