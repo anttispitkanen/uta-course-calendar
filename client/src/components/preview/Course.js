@@ -107,15 +107,6 @@ class Course extends Component {
         return filteredLessons;
     }
 
-    // parseLessonArrays(times, course) {
-    //     const t = times.map(time => (
-    //         this.applyExceptions(time, this.parseLessonArray(time, course))
-    //     ))
-    //     // .reduce((a, b) => a.concat(b));
-
-    //     return t;
-    // }
-
     parseOpsiRyhma(course, group) {
         const teachingLanguage = course.teachingLanguage;
         const groupName = group.nimi || null; // nimi is like "Harjoitusryhmä 1", or empty string for lectures

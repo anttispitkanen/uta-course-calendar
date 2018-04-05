@@ -11,6 +11,7 @@ const getCourses = async () => {
     try {
         const response = await axios.get(API_URL);
         const data = await response.data;
+        // TODO: validate data before writing
         fs.writeFile('./courses.json', JSON.stringify(data), err => {
             if (err) throw Error(err);
         });
