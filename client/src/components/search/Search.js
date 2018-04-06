@@ -3,11 +3,18 @@ import { Link } from 'react-router-dom';
 
 import './Search.scss';
 
+const exampleUrls = [
+    'https://www10.uta.fi/opas/opetusohjelma/marjapuuro.htm?id=37077',
+    'https://www10.uta.fi/opas/opetusohjelma/marjapuuro.htm?id=35081',
+    'https://www10.uta.fi/opas/opetusohjelma/marjapuuro.htm?id=37091'
+];
+
 class Search extends Component {
     constructor() {
         super();
         this.state = {
-            value: ''
+            value: '',
+            currentIndex: 0
         };
     }
 
@@ -61,6 +68,13 @@ class Search extends Component {
         }
     }
 
+    provideExample = () => {
+        this.setState({
+            value: exampleUrls[this.state.currentIndex],
+            currentIndex: (this.state.currentIndex + 1) % exampleUrls.length
+        });
+    }
+
     render() {
         return (
             <div className="search">
@@ -69,7 +83,15 @@ class Search extends Component {
                 </div>
 
                 <form id="search-form" className="search-form" onSubmit={this.handleSubmit}>
-                    <label className="search-label">Search for the course:</label>
+                    <div className="search-label-showme-container">
+                        <span className="search-label">Search for the course:</span>
+                        <input
+                            type="button"
+                            value="Show me!"
+                            className="search-showme-btn"
+                            onClick={this.provideExample} />
+                    </div>
+
                     <input
                         type="text"
                         value={this.state.value}

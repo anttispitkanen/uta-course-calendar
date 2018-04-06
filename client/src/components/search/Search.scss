@@ -42,13 +42,25 @@ $search-button-side-padding: 24px;
         background-color: white;
         box-shadow: $small-shadow;
 
-        .search-label {
+        .search-label-showme-container {
             padding: $search-text-padding;
-            align-self: flex-start;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-between;
+
+            .search-showme-btn {
+                color: $green;
+                padding: 0;
+                outline: none;
+                border: none;
+                text-decoration: underline;
+                font-size: .9rem;
+            }
         }
 
         .search-text {
-            font-size: 1rem;
+            font-size: .9rem;
             padding: $search-text-padding;
             border: none;
             width: 100%;
