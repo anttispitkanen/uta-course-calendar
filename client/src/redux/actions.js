@@ -6,46 +6,46 @@
  * Search actions
  */
 const search = id => ({
-    type: 'SEARCH',
-    id
+  type: 'SEARCH',
+  id,
 });
 
 const searchError = () => ({
-    type: 'SEARCH_ERROR'
+  type: 'SEARCH_ERROR',
 });
 
 export const searchActions = {
-    search,
-    searchError
+  search,
+  searchError,
 };
 
 /**
  * Course actions
  */
 const courseFetch = () => ({
-    type: 'COURSE_FETCH'
+  type: 'COURSE_FETCH',
 });
 
 const courseFetchError = () => ({
-    type: 'COURSE_FETCH_ERROR'
+  type: 'COURSE_FETCH_ERROR',
 });
 
 const courseFetchSuccess = course => ({
-    type: 'COURSE_FETCH_SUCCESS',
-    course
+  type: 'COURSE_FETCH_SUCCESS',
+  course,
 });
 
 const toggleGroupSelected = (id, group) => ({
-    type: 'TOGGLE_GROUP_SELECTED',
-    id,
-    group
+  type: 'TOGGLE_GROUP_SELECTED',
+  id,
+  group,
 });
 
 export const courseActions = {
-    courseFetch,
-    courseFetchError,
-    courseFetchSuccess,
-    toggleGroupSelected
+  courseFetch,
+  courseFetchError,
+  courseFetchSuccess,
+  toggleGroupSelected,
 };
 
 /**
@@ -53,18 +53,18 @@ export const courseActions = {
  */
 
 const clearChosenGroups = () => ({
-    type: 'CLEAR_CHOSEN_GROUPS'
+  type: 'CLEAR_CHOSEN_GROUPS',
 });
 
 const toggleGroupChosenForDownload = (id, group) => ({
-    type: 'TOGGLE_GROUP_CHOSEN_FOR_DOWNLOAD',
-    id,
-    group
+  type: 'TOGGLE_GROUP_CHOSEN_FOR_DOWNLOAD',
+  id,
+  group,
 });
 
 export const groupActions = {
-    clearChosenGroups,
-    toggleGroupChosenForDownload
+  clearChosenGroups,
+  toggleGroupChosenForDownload,
 };
 
 /**
@@ -72,9 +72,9 @@ export const groupActions = {
  */
 
 const sendForDownload = () => ({
-    type: 'SEND_FOR_DOWNLOAD'
+  type: 'SEND_FOR_DOWNLOAD',
 });
 
 export const downloadActions = {
-    sendForDownload
+  sendForDownload,
 };

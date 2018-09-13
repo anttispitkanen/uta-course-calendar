@@ -13,6 +13,7 @@ I study at UTA myself and got tired of writing my classes in my calendar by hand
 ## How does it work?
 
 The student
+
 1. Finds their course in the University of Tampere study schedule
 2. Copies the URL
 3. Pastes the URL into this app
@@ -27,21 +28,22 @@ electronic calendar.
 This application is built and maintained by a third party (=a UTA student) and is not an official tool provided by University of Tampere.
 
 ---
+
 # Tech
 
 Front-end:
 
-* React (Create React App), React Router 4
-* Redux, React Redux, Redux Saga
-* `immutable-ics` for creating the .ics-files
-* `js-file-download` as a download helper
+- React (Create React App), React Router 4
+- Redux, React Redux, Redux Saga
+- `immutable-ics` for creating the .ics-files
+- `js-file-download` as a download helper
 
 Back-end:
 
-* Node.js
-* Express
+- Node.js
+- Express
 
 Hosting:
 
-* Heroku
-* GitHub
+- Heroku
+- GitHub
