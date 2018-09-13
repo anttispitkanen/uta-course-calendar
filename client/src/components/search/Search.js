@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import './Search.scss';
 
 const exampleUrls = [
-  'https://www10.uta.fi/opas/opetusohjelma/marjapuuro.htm?id=37077',
-  'https://www10.uta.fi/opas/opetusohjelma/marjapuuro.htm?id=35081',
-  'https://www10.uta.fi/opas/opetusohjelma/marjapuuro.htm?id=37091',
+  'https://www10.uta.fi/opas/opetusohjelma/marjapuuro.htm?id=37667',
+  'https://www10.uta.fi/opas/opetusohjelma/marjapuuro.htm?id=38619',
+  'https://www10.uta.fi/opas/opetusohjelma/marjapuuro.htm?id=38702',
 ];
 
 class Search extends Component {
