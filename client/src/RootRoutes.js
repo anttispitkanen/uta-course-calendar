@@ -6,11 +6,11 @@ import HowToUse from './components/howToUse/HowToUse';
 import Help from './components/help/Help';
 
 const RootRoutes = () => (
-    <div>
-        <Route path="/" component={Preview} />
-        <Route path="/help" component={Help} />
-        <Route path="/howto" component={HowToUse} />
-    </div>
+  <div>
+    <Route path="/" component={Preview} />
+    <Route path="/help" component={Help} />
+    <Route path="/howto" component={HowToUse} />
+  </div>
 );
 
 export default RootRoutes;

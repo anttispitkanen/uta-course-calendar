@@ -1,63 +1,63 @@
 @import '../../../styles/commons';
 
 .lessons-card {
-    border: 1px solid #DDD;
-    margin: 10px 10px 10px 0;
-    padding: 10px;
-    background-color: white;
-    opacity: .6;
-    transition: opacity $transition-quick linear;
-    flex: 0 0 auto; /* add this for older Safari version */
+  border: 1px solid #ddd;
+  margin: 10px 10px 10px 0;
+  padding: 10px;
+  background-color: white;
+  opacity: 0.6;
+  transition: opacity $transition-quick linear;
+  flex: 0 0 auto; /* add this for older Safari version */
 
-    &:nth-child(1) {
-        margin-left: 10px;
+  &:nth-child(1) {
+    margin-left: 10px;
+  }
+
+  .lessons-card-select-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 1rem;
+
+    span {
+      margin-right: 10px;
     }
 
-    .lessons-card-select-container {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        font-size: 1rem;
+    input[type='checkbox'] {
+      height: 20px;
+      width: 20px;
+      cursor: pointer;
+      position: relative;
+    }
+  }
 
-        span {
-            margin-right: 10px;
-        }
+  .lessons-card-header {
+    max-width: 300px;
 
-        input[type=checkbox] {
-            height: 20px;
-            width: 20px;
-            cursor: pointer;
-            position: relative;
-        }
+    h3 {
+      text-align: center;
+      font-size: 1.5rem;
+      transition: color $transition-quick linear;
     }
 
-    .lessons-card-header {
-        max-width: 300px;
-
-        h3 {
-            text-align: center;
-            font-size: 1.5rem;
-            transition: color $transition-quick linear;
-        }
-
-        h4 {
-            text-align: center;
-            font-size: 1.3rem;
-            font-weight: 300;
-        }
+    h4 {
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: 300;
     }
+  }
 
-    ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &.selected {
+    opacity: 1;
+
+    .lessons-card-header h3 {
+      color: $green;
     }
-
-    &.selected {
-        opacity: 1;
-
-        .lessons-card-header h3 {
-            color: $green;
-        }
-    }
+  }
 }

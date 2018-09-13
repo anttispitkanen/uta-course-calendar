@@ -1,25 +1,25 @@
 @import '../../styles/commons';
 
 .main-footer {
-    background-color: $footer-color;
-    color: white;
-    font-weight: 300;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap-reverse;
-    padding: 20px;
+  background-color: $footer-color;
+  color: white;
+  font-weight: 300;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap-reverse;
+  padding: 20px;
 
-    .footer-uta-logo {
-        height: 35px;
-        margin: 20px;
+  .footer-uta-logo {
+    height: 35px;
+    margin: 20px;
+  }
+
+  .copyright {
+    margin: 20px;
+
+    .footer-link {
+      color: white;
     }
-
-    .copyright {
-        margin: 20px;
-
-        .footer-link {
-            color: white;
-        }
-    }
+  }
 }

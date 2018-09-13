@@ -3,6 +3,6 @@ import { courseActions } from '../../../redux/actions';
 import LessonsCard from './LessonsCard';
 
 export default connect(
-    null,
-    courseActions
+  null,
+  courseActions,
 )(LessonsCard);

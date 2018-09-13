@@ -1,67 +1,67 @@
 @import '../../styles/commons';
 
 .main-header {
-    box-shadow: $header-shadow;
-    width: 100%;
+  box-shadow: $header-shadow;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  padding: 20px;
+
+  .main-header-logo-heading-wrapper {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
     align-items: center;
-    position: absolute;
-    top: 0;
-    padding: 20px;
 
-    .main-header-logo-heading-wrapper {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        .main-header-logo {
-            height: 35px;
-        }
-
-        .main-header-heading {
-            color: $grey-text;
-            font-size: 1.5rem;
-            font-weight: 300;
-            margin: 0;
-            margin-left: 10px;
-            align-self: center;
-        }
+    .main-header-logo {
+      height: 35px;
     }
 
-    .header-help-link {
-        color: $darker-green;
-
-        .link-text {
-            display: inline;
-        }
-
-        .link-icon {
-            display: none;
-        }
+    .main-header-heading {
+      color: $grey-text;
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin: 0;
+      margin-left: 10px;
+      align-self: center;
     }
+  }
+
+  .header-help-link {
+    color: $darker-green;
+
+    .link-text {
+      display: inline;
+    }
+
+    .link-icon {
+      display: none;
+    }
+  }
 }
 
 @media screen and (max-width: 460px) {
-    .main-header {
-        .main-header-logo-heading-wrapper {
-            .main-header-heading {
-                font-size: 1.3rem;
-            }
-        }
-
-        .header-help-link {
-            text-decoration: none;
-
-            .link-text {
-                display: none;
-            }
-
-            .link-icon {
-                display: inline;
-                font-size: 2rem;
-                color: $green;
-            }
-        }
+  .main-header {
+    .main-header-logo-heading-wrapper {
+      .main-header-heading {
+        font-size: 1.3rem;
+      }
     }
+
+    .header-help-link {
+      text-decoration: none;
+
+      .link-text {
+        display: none;
+      }
+
+      .link-icon {
+        display: inline;
+        font-size: 2rem;
+        color: $green;
+      }
+    }
+  }
 }

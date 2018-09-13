@@ -6,102 +6,102 @@
  * Search reducer
  */
 const initialSearchState = {
-    id: null,
-    error: false
+  id: null,
+  error: false,
 };
 
 export const searchReducer = (state = initialSearchState, action) => {
-    switch (action.type) {
-        case 'SEARCH':
-            return {
-                ...state,
-                error: false,
-                id: action.id
-            };
+  switch (action.type) {
+    case 'SEARCH':
+      return {
+        ...state,
+        error: false,
+        id: action.id,
+      };
 
-        case 'SEARCH_ERROR':
-            return {
-                ...state,
-                error: true
-            };
+    case 'SEARCH_ERROR':
+      return {
+        ...state,
+        error: true,
+      };
 
-        default:
-            return state;
-    }
-}
+    default:
+      return state;
+  }
+};
 
 /**
  * Course reducer
  */
 const courseStatus = {
-    SUCCESS: 'SUCCESS',
-    FETCHING: 'FETCHING',
-    ERROR: 'ERROR'
+  SUCCESS: 'SUCCESS',
+  FETCHING: 'FETCHING',
+  ERROR: 'ERROR',
 };
 
 const initialCourseState = {
-    course: null,
-    status: courseStatus.SUCCESS
+  course: null,
+  status: courseStatus.SUCCESS,
 };
 
 export const courseReducer = (state = initialCourseState, action) => {
-    switch (action.type) {
-        case 'COURSE_FETCH':
-            return {
-                ...state,
-                status: courseStatus.FETCHING
-            };
+  switch (action.type) {
+    case 'COURSE_FETCH':
+      return {
+        ...state,
+        status: courseStatus.FETCHING,
+      };
 
-        case 'COURSE_FETCH_ERROR':
-            return {
-                ...state,
-                status: courseStatus.ERROR
-            };
+    case 'COURSE_FETCH_ERROR':
+      return {
+        ...state,
+        status: courseStatus.ERROR,
+      };
 
-        case 'COURSE_FETCH_SUCCESS':
-            return {
-                ...state,
-                status: courseStatus.SUCCESS,
-                course: action.course
-            };
+    case 'COURSE_FETCH_SUCCESS':
+      return {
+        ...state,
+        status: courseStatus.SUCCESS,
+        course: action.course,
+      };
 
-        case 'TOGGLE_GROUP_SELECTED':
-            const id = action.id;
-            return {
-                ...state,
-                course: {
-                    ...state.course,
-                    _opsi_opryhmat: state.course._opsi_opryhmat.map(r => {
-                        if (r.id === id) {
-                            return { ...r, selected: !r.selected };
-                        } else {
-                            return r;
-                        }
-                    })
-                }
-            };
+    case 'TOGGLE_GROUP_SELECTED':
+      const id = action.id;
+      return {
+        ...state,
+        course: {
+          ...state.course,
+          _opsi_opryhmat: state.course._opsi_opryhmat.map(r => {
+            if (r.id === id) {
+              return { ...r, selected: !r.selected };
+            } else {
+              return r;
+            }
+          }),
+        },
+      };
 
-        default:
-            return state;
-    }
-}
+    default:
+      return state;
+  }
+};
 
 /**
  * Reducer for chosen groups to send to server for parsing and download
  */
 export const chosenGroupsReducer = (state = [], action) => {
-    switch (action.type) {
-        case 'CLEAR_CHOSEN_GROUPS':
-            return [];
+  switch (action.type) {
+    case 'CLEAR_CHOSEN_GROUPS':
+      return [];
 
-        case 'TOGGLE_GROUP_CHOSEN_FOR_DOWNLOAD':
-            if (state.find(a => a.id === action.id)) {
-                return state.filter(a => a.id !== action.id);
-            } else {
-                return [ ...state, action.group ];
-            }
+    case 'TOGGLE_GROUP_CHOSEN_FOR_DOWNLOAD':
+      if (state.find(a => a.id === action.id)) {
+        return state.filter(a => a.id !== action.id);
+      } else {
+        return [...state, action.group];
+      }
 
-        default:
-            return state;
-    }
-}
+    default:
+      return state;
+  }
+};

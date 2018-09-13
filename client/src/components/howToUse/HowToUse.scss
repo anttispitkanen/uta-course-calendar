@@ -1,73 +1,73 @@
 @import '../../styles/commons';
 
 .howto-wrapper {
-    position: absolute;
-    z-index: 10000;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: white;
-    min-height: 90vh;
-    max-height: 190vh;
-    overflow: scroll;
-    width: 95vw;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 40px;
-    box-shadow: $large-shadow;
+  position: absolute;
+  z-index: 10000;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  min-height: 90vh;
+  max-height: 190vh;
+  overflow: scroll;
+  width: 95vw;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px;
+  box-shadow: $large-shadow;
 
-    .howto-close-wrapper {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
+  .howto-close-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 
-        .howto-close {
-            color: $green;
-            font-size: 2rem;
-            cursor: pointer;
-        }
+    .howto-close {
+      color: $green;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+  }
+
+  h2 {
+    color: $green;
+    margin-bottom: 40px;
+    font-size: 2rem;
+  }
+
+  .howto-section {
+    margin-bottom: 60px;
+
+    .howto-section-number {
+      color: $green;
+      font-style: normal;
+      font-size: 3rem;
     }
 
-    h2 {
+    .howto-section-text {
+      a {
         color: $green;
-        margin-bottom: 40px;
-        font-size: 2rem;
+        text-decoration: none;
+      }
     }
 
-    .howto-section {
-        margin-bottom: 60px;
-
-        .howto-section-number {
-            color: $green;
-            font-style: normal;
-            font-size: 3rem;
-        }
-
-        .howto-section-text {
-            a {
-                color: $green;
-                text-decoration: none;
-            }
-        }
-
-        .howto-image {
-            width: 100%;
-        }
+    .howto-image {
+      width: 100%;
     }
+  }
 }
 
 @media screen and (max-width: 600px) {
-    .howto-wrapper {
-        padding: 20px;
+  .howto-wrapper {
+    padding: 20px;
 
-        h2 {
-            font-size: 1.4rem;
-        }
-
-        .howto-section {
-            .howto-section-number {
-                font-size: 2rem;
-            }
-        }
+    h2 {
+      font-size: 1.4rem;
     }
+
+    .howto-section {
+      .howto-section-number {
+        font-size: 2rem;
+      }
+    }
+  }
 }

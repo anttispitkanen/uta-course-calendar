@@ -18,26 +18,24 @@ import Footer from './components/footer/Footer';
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-    rootReducer,
-    {}, // no initially loaded state,
-    composeWithDevTools(
-        applyMiddleware(sagaMiddleware)
-    )
+  rootReducer,
+  {}, // no initially loaded state,
+  composeWithDevTools(applyMiddleware(sagaMiddleware)),
 );
 
 sagaMiddleware.run(appSaga);
 
 const App = () => (
-    <Provider store={store}>
-        <Router>
-            <div className="app">
-                <Header />
-                <Search />
-                <RootRoutes />
-                <Footer />
-            </div>
-        </Router>
-    </Provider>
+  <Provider store={store}>
+    <Router>
+      <div className="app">
+        <Header />
+        <Search />
+        <RootRoutes />
+        <Footer />
+      </div>
+    </Router>
+  </Provider>
 );
 
 export default App;

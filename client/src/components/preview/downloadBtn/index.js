@@ -3,10 +3,10 @@ import DownloadBtn from './DownloadBtn';
 import { downloadActions } from '../../../redux/actions';
 
 const mapStateToProps = state => ({
-    chosenGroups: state.chosenGroupsReducer
+  chosenGroups: state.chosenGroupsReducer,
 });
 
 export default connect(
-    mapStateToProps,
-    { ...downloadActions }
+  mapStateToProps,
+  { ...downloadActions },
 )(DownloadBtn);
